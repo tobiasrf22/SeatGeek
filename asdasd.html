@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "C:\Users\tobia\Desktop\Nueva carpeta\sgk.css" />
+</head>
+<body>
+
+<div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn" id="Sports">Sports 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="#">MLB
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="#">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    <a href="#">NBA
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    <a href="#">NHL</a>
+    <a href="#">NFL</a> 
+    </div>
+  </div>
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+   <div class="right">
+        <a href="#home">Sign Up</a>
+        <a id="In" href="#" onclick="googleSignIn()" >Log In</a>
+        <a id="Out" onclick="googleSignout()">Log Out</a>
+   </div>
+</div>
+
+
+<div class="search-container">
+        <input type="text" autocomplete="off" name="search" placeholder="Search by team, artist, event, or venue">
+  </div>
+<div id="slider-holder" class="slider-holder">
+        <span id="slider-image-1"></span>
+        <span id="slider-image-2"></span>
+        <span id="slider-image-3"></span>
+        <div id="image-holder" class="image-holder">
+            <div class="Concert" style="background-image: url(https://seatgeek.com/images/performers-landscape/generic-concerts-4104f8/677165/huge.jpg);">
+            <a href="www.google.com">
+            <a>Concerts</a>
+            </a>
+            </div>
+            <div class="Concert" style="background-image: url(https://seatgeek.com/images/performers-landscape/generic-nfl-football-ea572f/677209/huge.jpg);" >
+            <a>NFL</a>
+            </div>
+            <div class="Concert" style="background-image: url(https://seatgeek.com/images/performers-landscape/generic-mlb-baseball-65710f/677213/huge.jpg);">
+            <a href="www.google.com">
+            <a>MLB</a>
+            </a>
+            </div>
+            <div class="Concert" style="background-image: url(https://seatgeek.com/images/performers-landscape/generic-nba-basketball-cbfe7e/677206/huge.jpg);" >
+            <a>NBA</a>
+            </div>
+            <div class="Concert" style="background-image: url(https://seatgeek.com/images/performers-landscape/generic-nhl-hockey-084849/677199/huge.jpg);" >
+            <a>NHL</a>
+            </div>
+            <div class="Concert" style="background-image: url(https://seatgeek.com/images/performers-landscape/generic-mls-soccer-8a9e12/677195/huge.jpg);" >
+            <a>MLS</a>
+            </div>
+        </div>
+        <div class="button-holder">
+            <button id="button_1" onclick="slider_image_2()" class="slider-change"></button>
+            <button id="button_2" onclick="slider_image_1()" class="slider-change"></button>
+        </div>
+    </div>
+    <script>
+    var b2 = document.getElementById("button_2");
+    var b1 = document.getElementById("button_1");
+    b2.style.display ="none";
+    var d = document.getElementById("image-holder");
+    d.style.left = "0px";
+
+function slider_image_1(){
+    var d = document.getElementById("image-holder");
+    d.style.left = "0px";
+    b2.style.display ="none";
+    b1.style.display ="block";
+}
+
+
+function slider_image_2(){
+    var d = document.getElementById("image-holder");
+    d.style.left = "-880px";
+    b2.style.display ="block";
+        b1.style.display ="none";
+}
+    
+    function Dover(x) {
+        var d = document.getElementById(x.id + 1);
+        d.style.display = "block";
+        x.style.backgroundColor = "#e0e8ff";
+}
+   
+     </script>
+
+</body>
+</html>
+
