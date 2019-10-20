@@ -421,12 +421,54 @@ input[type=text]:focus,input[type=text]:hover  {
 
         }
 
-        table tr td a p{
+        table tr td a{
           padding: 10px;
           background-color: green;
           border-radius: 35%;
           color: white;
           font-size: 13px;
           text-decoration: none;
+          align-content: center;
         }
 
+        table{
+          padding-left:170px;
+          font-size: 15px;
+          padding-top: 10px;
+        }
+
+        table tr td a:hover{
+          font-size: 23px;
+          background-color: red;
+        }
+
+        .team-ab{
+          background-color: green;
+          width: auto;
+          padding: 10px;
+          width: 30px;
+          border-radius: 30%;
+          color: white;
+        }
+        .team-name{
+          position: absolute;
+          margin-left: 65px;
+          top: 55.5%;
+
+        }
+        .team{
+          padding: 10px;
+          border-radius: 13px;
+
+        }
+        .team:hover{
+          box-shadow: 19px 17px 56px -19px rgba(0,0,0,0.75);
+          background-size: 120px;
+          
+          background-repeat: no-repeat;
+          background-position: -7px;
+
+        }
+        #Bos:hover{
+          background-image: url("https://cdn1.imggmi.com/uploads/2019/10/7/a1617bed665ba625fc5a4a885df2d6ae-full.png");
+        }
