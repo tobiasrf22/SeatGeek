@@ -1,0 +1,62 @@
+body {
+  font-family: "Lato", sans-serif;
+  max-width: 100%;
+    overflow-x: hidden;
+    background-color: green;
+}
+.navbar{
+	position: relative;
+  background-color: red;
+  width: all;
+  height: 60px;
+  padding: 0px;
+  margin: -12px;
+}
+.navbar #Sports{
+	display: inline-block;
+	margin-left: 340px;
+	margin-top: 12px;
+	padding: 10px;
+	
+}
+.navbar #Sports:hover{
+	background-color: white;
+	color: #1673e6;
+	border-radius: 8px;
+}
+.navbar .dropdown{
+	display: none;
+}
+.navbar #Sports .dropdown  span {
+	display: block;
+	
+
+}
+span  #liga{
+	padding: 10px;
+	padding-left: 0px;
+	margin-top: 10px;
+}
+.navbar #Sports:hover  .dropdown{
+	display: block;
+}
+.dropdown span:hover{
+	background-color:#1762bf;
+	color: white;
+	border-radius: 5px;
+}
+.dropdown-dropdown{
+	float: right;
+	margin-left: 4%;
+	position: absolute;
+	background-color: white;
+	border-style: none;
+	padding: 10px;
+	margin-top: -37px;
+	border-radius: 8px;
+	border-top-left-radius: 0px;
+	display: block;
+}
+.dropdown-dropdown span{
+	padding: 10px;
+}
