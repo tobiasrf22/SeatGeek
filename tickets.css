@@ -1,0 +1,88 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 33%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  padding-top: 20px;
+  overflow-y: scroll;
+  box-shadow: -15px 4px 92px -28px rgba(0,0,0,0.75);
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #1673e6;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+.tickets{
+  border-bottom-style: solid;
+  border-bottom-color: #f5f5f5;
+  border-width: thin;
+  height:60px;
+  margin-left: 17px;
+}
+.tickets span{
+  margin-top: 12px;
+}
+.tickets button{
+  background-color: #1673e6;
+  border-style: none;
+  padding: 10px;
+  float: right;
+  color:white;
+  border-radius: 10px;
+  margin-top: -15px;
+  font-weight:bold;
+  font-size: 15px;
+  cursor:pointer;
+
+}
+.tickets button:hover{
+  background-color:#1762bf;
+}
+.tickets button:active {
+  background-color: red;
+}
