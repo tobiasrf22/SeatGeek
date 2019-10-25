@@ -4,7 +4,7 @@
 
 <link rel = "stylesheet"
    type = "text/css"
-   href = "C:\Users\Proyectos01\Desktop\SeatGeek-master\tickets.css" />
+   href = "C:\Users\Laboratorio06\Desktop\SeatGeek-master\tickets.css" />
    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
@@ -14,7 +14,7 @@
         <input type="text" placeholder="Search..">
         <button onclick="myfunction(this)">Sign in</button>
     </div>
-<div class="sidenav">
+<div class="sidenav" id="sidenav" style="margin-left: -500px">
     <div class="info" id="info">
     <div class="header" id="header" >
         <button id="Back"><span>Back</span> </button>
@@ -41,9 +41,11 @@
 </div>
 <script type="text/javascript">
     
-    document.getElementById ("Back").addEventListener ("click", myfunction, true);
-    function myfunction(x) {
-    document.getElementById("header").style.marginRight = "-500px";
+   if (document.getElementById("sidenav").style.marginLeft == "-500px") {
+document.getElementById("sidenav").style.transition = "1s";
+      document.getElementById("sidenav").style.marginLeft = "0px";
+   }
+    
 </script>
 
 <div class="stadium">

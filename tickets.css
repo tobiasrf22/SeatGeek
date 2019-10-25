@@ -2,6 +2,7 @@ body {
   font-family: "Lato", sans-serif;
   max-width: 100%;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 .navbar{
   position: relative;
@@ -60,6 +61,7 @@ body {
   padding-top: 20px;
   overflow-y: scroll;
   box-shadow: -15px 4px 92px -28px rgba(0,0,0,0.75);
+  transition: 1s;
 }
 
 .sidenav a {
@@ -134,7 +136,6 @@ body {
   background-color:#1762bf;
 }
 .tickets button:active {
-  background-color: red;
 }
 .tickets:hover{
 
@@ -142,9 +143,7 @@ body {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.tickets:active .ticketss{
-  margin-left: -100px;
-}
+
 .stadium{
   margin-right: -350px;
   margin-top: -75px;
@@ -170,6 +169,12 @@ body {
    background-size: 30px;
    background-repeat: no-repeat;
    background-position: 0px 4px;
+    -moz-user-select: none;
+     -webkit-user-select: none;
+      -ms-user-select:none;
+       user-select:none;
+       -o-user-select:none;
+
 }
 .header button span{
   margin-left: 50%;
@@ -186,7 +191,7 @@ body {
 .body img{
   width: 400px;
   height: 260px;
-  margin-left: 17%;
+  margin-left: 5%;
   border-radius: 10px;
 }
 
@@ -220,4 +225,7 @@ body {
 }
 .tickets-info button:hover{
   background-color:#1762bf;
+}
+#Back:active .sidenav{
+  margin-left: -500px;
 }
