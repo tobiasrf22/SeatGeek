@@ -146,9 +146,10 @@ body {
   margin-left: -100px;
 }
 .stadium{
-  margin-right: -150px;
-  margin-top: 3%;
+  margin-right: -350px;
+  margin-top: -75px;
   float: right;
+  transform: scale(0.7);
 }
 .ticketss{
   transition: 1s;
