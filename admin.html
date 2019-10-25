@@ -4,7 +4,7 @@
 
 <link rel = "stylesheet"
    type = "text/css"
-   href = "C:\Users\Laboratorio06\Desktop\SeatGeek-master\admin.css" />
+   href = "C:\Users\tobia\Desktop\SeatGeek-master\admin.css" />
    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
@@ -16,27 +16,82 @@
   <a href="#">Contact</a>
 </div>
 
-<div class="main">
+<div class="main-Ligas" id="main-Ligas">
   <table>
 
   <tr>
-    <td><a href="">NBA</a></td>
-    <td><a href="">MLB</a></td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NBA
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          SAF
+        </span>
+      </div>
+    </td>
   </tr>
   <tr>
-    <td><a href="">SAF</a></td>
-    <td><a href="">NHL</a></td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          MLB
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NHL
+        </span>
+      </div>
+    </td>
   </tr>
   <tr>
-    <td><a href="">NFL</a></td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NFL
+        </span>
+      </div>
+    </td>
     
-  </tr>
-</table>
-<button>Agregar</button>
-<button>Modificar</button>
-<button (click)=>Eliminar</button>
-</div>
+  </tr></table><div class="ABM">
+  <button>Agregar</button>
+  <button>Modificar</button>
+  <button >Eliminar</button></div>
+<div class="main-Teams" id="main-Teams">
+  <table>
 
+  <tr>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          
+        </span>
+      </div>
+    </td>
+  </tr>
+  </table>
+  
+</div>
+</div>
+<script type="text/javascript">
+  
+function Liga(){
+  document.getElementById("main-Ligas").style.transition = "0.7s";
+  document.getElementById("main-Ligas").style.marginLeft = "-1000px";
+  document.getElementById("main-Teams").style.transition = "0.7s";
+  document.getElementById("main-Teams").style.marginLeft = "200px";
+}
+</script>
 </body>
 </html>
 

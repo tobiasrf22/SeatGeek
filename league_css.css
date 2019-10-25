@@ -4,6 +4,7 @@ body {
 
  background-size: 100% 300px;
  background-repeat: no-repeat;
+ overflow-x: hidden;
 }
 
 .navbar {

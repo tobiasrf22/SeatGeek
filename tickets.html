@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <head>
 
 <link rel = "stylesheet"
    type = "text/css"
-   href = "C:\Users\Laboratorio06\Desktop\SeatGeek-master\tickets.css" />
+   href = "C:\Users\tobia\Desktop\SeatGeek-master\tickets.css" />
    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<div class="navbar">
 		<span style="display: block;"> Toronto Raptors at Boston Celtics</span>
 		<span style="color: #e6e6e6">TD Garden — Boston, MA on Fri Oct 25 at 7:00pm</span>
@@ -83,7 +86,7 @@
 	</div>
 </div>
 </div>
-<div class="sidenav" id="sidenav1" style="margin-left: -500px">
+<div class="sidenav" id="sidenav1" style="margin-left: -700px">
     <div class="info" id="info">
     <div class="header" id="header" >
         <button id="Back"><span>Back</span> </button>
@@ -111,7 +114,7 @@
 <script>
 	document.getElementById ("tickets").addEventListener ("click", myfunction, true);
 	function myfunction(x) {
-  	document.getElementById("sidenav").style.marginLeft = "-500px";
+  	document.getElementById("sidenav").style.marginLeft = "-700px";
   	document.getElementById("sidenav1").style.transition = "1s";
   	document.getElementById("sidenav1").style.marginLeft = "0px";
 

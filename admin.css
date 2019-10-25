@@ -26,7 +26,11 @@ body {
   color: #f1f1f1;
 }
 
-.main {
+.main-Ligas {
+  margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+.main-Teams {
   margin-left: 200px; /* Same as the width of the sidenav */
 }
 
@@ -35,36 +39,71 @@ body {
   .sidenav a {font-size: 18px;}
 }
 
-.main table{
+.main-Ligas table{
 
-  width:50%;
+  width:0%;
   height: 50%;
   margin-left: 0px;
   padding:10px 10px;
 
 }
-.main table tr td{  
+.main-Teams table{
+
+  width:100%;
+  height: 50%;
+  margin-left: 0px;
+  padding:10px 10px;
+
+
+}
+.main-Ligas table tr td{  
   padding:10px 10px;
   border-style: solid;
   border-color: #f5f5f5;
   border-width: thin;
   border-radius: 8px;
 }
-.main table tr td:hover{
+.main-Teams table tr .Team{  
+  padding:20px 20px;
+  border-style: none;
+  border-color: #f5f5f5;
+  border-width: thin;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+  }
+.main-Ligas table tr td:hover{
   background-color: #1673e6;
+
 }
-.main table tr td:hover  a{
+.main-Teams table tr .Team:hover{
+  background-image: url('https://cdn1.imggmi.com/uploads/2019/10/7/a1617bed665ba625fc5a4a885df2d6ae-full.png');
+  background-size: 120px;
+  background-repeat: no-repeat;
+  background-position: 0px;
+  
+  box-shadow: 19px 17px 56px -19px rgba(0,0,0,0.75);
+
+
+
+
+
+}
+.main-Ligas table tr td:hover  span{
   color: white;
 }
-.main table tr td a{
+.main-Ligas table tr td span{
   color: black;
 }
 
-.main table tr td a{
+.main-Ligas table tr td span{
   text-decoration: none;
  
 }
-.main button{
+.main-Ligas .ABM{
+  margin-left: 14px;
+}
+.main-Ligas button{
   padding: 10px;
   border-radius: 10px;
   border-style: none;
@@ -75,8 +114,41 @@ body {
   font-size: 15px;
   cursor:pointer;
 
+
 }
-.main button:hover{
+.main-Ligas button:hover{
     background-color:#1762bf;
+}
+.main-Teams .ABM{
+  margin-left: 14px;
+}
+.main-Teams button{
+  padding: 10px;
+  border-radius: 10px;
+  border-style: none;
+
+  background-color: #1673e6;
+  color:white;
+  
+  font-size: 15px;
+  cursor:pointer;
+
+
+}
+.main-Teams button:hover{
+    background-color:#1762bf;
+}
+
+.Liga{
+  cursor: pointer;
+}
+.Team-abbreviation{
+  background-color: green;
+  padding: 10px;
+  border-radius: 15px;
+  color: white;
+}
+.Team-name {
+  margin-left: 15px;
 }
 
