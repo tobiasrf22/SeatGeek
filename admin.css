@@ -31,7 +31,8 @@ body {
 }
 
 .main-Teams {
-  margin-left: 200px; /* Same as the width of the sidenav */
+  margin-left: -2000px; 
+  display:none;/* Same as the width of the sidenav */
 }
 
 @media screen and (max-height: 450px) {
@@ -41,7 +42,7 @@ body {
 
 .main-Ligas table{
 
-  width:0%;
+  width:50%;
   height: 50%;
   margin-left: 0px;
   padding:10px 10px;
@@ -152,3 +153,55 @@ body {
   margin-left: 15px;
 }
 
+.new-Team{
+  margin-left: 200px;
+  padding: 10px;
+}
+.new-Team table tr td{
+  padding: 10px;
+  padding-right: 50px;
+}
+.new-Team table tr td span{
+  color: #636363;
+}
+.new-Team input{
+  border-radius: 5px;
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+}
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+
+
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}

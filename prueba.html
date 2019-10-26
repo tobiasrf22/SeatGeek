@@ -4,154 +4,80 @@
 
 <link rel = "stylesheet"
    type = "text/css"
-   href = "C:\Users\tobia\Desktop\SeatGeek-master\admin.css" />
+   href = "C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin.css" />
    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
 
 <div class="sidenav">
-  <a href="#">Ligas</a>
+  <a href="#" onclick="algo2()">Ligas</a>
   <a href="#">Services</a>
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
 
-<div class="main-Teams" id="main-Teams">
-  <table>
-
+<div class="new-Team" id="new-Team">
+<table>
   <tr>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
+      <div class="Container">
+        <span style="display: block;">
+          Nombre
         </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-      </td>
-      <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
+        <input type="text" name="Nombre">
       </div>
     </td>
+  </tr>
+  <tr>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
+      <div class="Container">
+        <span style="display: block;">
+          Historia
         </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
+        <input  type="text" name="Historia">
       </div>
     </td>
+  </tr>
+  <tr>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
+      <div class="Container">
+        <span style="display: block;">
+          Localidad
         </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
+        <input  type="text" name="Historia">
       </div>
     </td>
-    </tr>
-    <tr>
+  </tr>
+  <tr>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
+      <div class="Container">
+        <span style="display: block;">
+          Estadio
         </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-      </td>
-      <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-    </td>
-    <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<ul id="myUL">
+  <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
+  <li><a href="#">Agnes</a></li>
+
+  <li><a href="#">Billy</a></li>
+  <li><a href="#">Bob</a></li>
+
+  <li><a href="#">Calvin</a></li>
+  <li><a href="#">Christina</a></li>
+  <li><a href="#">Cindy</a></li>
+</ul>
       </div>
     </td>
-    <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-    </td>
-    </tr><tr>
-    <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-      </td>
-      <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-    </td>
-    <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-    </td>
-    <td>
-      <div class="Team" id="Team" onclick="Liga()">
-        <span class="Team-abbreviation">
-          BOS
-        </span>
-        <span class="Team-name">
-          Boston Celtics
-        </span>
-      </div>
-    </td>
-    </tr>
-  </table>
-  <div class="ABM">
-  <button>Agregar</button>
-  <button>Modificar</button>
-  <button onclick="elim()">Eliminar</button></div>
-  
+  </tr>
+
+</table>
+<button onclick="algo()">
+  Algo
+</button>
+
 </div>
-</div>
+
 <script type="text/javascript">
   
 function Liga(){
@@ -169,6 +95,34 @@ for (var i = 0; i < x.length; i++) {
 
 function teamss(){
   document.getElementById("main-Teams").style.display = "none";
+}
+function algo(){
+  document.getElementById("new-Team").style.display = "none";
+}
+function algo2(){
+  document.getElementById("new-Team").style.display = "block";
+}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            document.getElementById("myUL").style.display = "none";
+        } else {
+            li[i].style.display = "none";
+            document.getElementById("myUL").style.display = "block";
+        }
+    }
+}
+function select_stadium(x){
+  x.style.backgroundColor  ="#1673e6";
+  x.style.color  ="white";
 }
 </script>
 </body>

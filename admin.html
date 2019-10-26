@@ -4,7 +4,7 @@
 
 <link rel = "stylesheet"
    type = "text/css"
-   href = "C:\Users\tobia\Desktop\SeatGeek-master\admin.css" />
+   href = "C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin.css" />
    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
@@ -15,6 +15,7 @@
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
+
 
 <div class="main-Ligas" id="main-Ligas">
   <table>
@@ -64,6 +65,7 @@
   <button>Agregar</button>
   <button>Modificar</button>
   <button >Eliminar</button></div>
+</div>
 <div class="main-Teams" id="main-Teams">
   <table>
 
@@ -74,22 +76,154 @@
           BOS
         </span>
         <span class="Team-name">
-          
+          Boston Celtics
+        </span>
+      </div>
+      </td>
+      <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
         </span>
       </div>
     </td>
-  </tr>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+      </td>
+      <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    </tr><tr>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+      </td>
+      <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Team" id="Team" onclick="Liga()">
+        <span class="Team-abbreviation">
+          BOS
+        </span>
+        <span class="Team-name">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+    </tr>
   </table>
+  <div class="ABM">
+  <button>Agregar</button>
+  <button>Modificar</button>
+  <button onclick="elim()">Eliminar</button></div>
   
-</div>
 </div>
 <script type="text/javascript">
-  
+  var x = document.getElementsByClassName("Liga");
+  for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", Liga, true);
+}
 function Liga(){
   document.getElementById("main-Ligas").style.transition = "0.7s";
-  document.getElementById("main-Ligas").style.marginLeft = "-1000px";
-  document.getElementById("main-Teams").style.transition = "0.7s";
+  document.getElementById("main-Ligas").style.marginLeft = "-2000px";
+  document.getElementById("main-Teams").style.transition = "1s";
+  document.getElementById("main-Teams").style.display = "block";
   document.getElementById("main-Teams").style.marginLeft = "200px";
+  document.getElementById("main-Ligas").style.display = "none";
+}
+
+function elim(){
+ var x = document.getElementsByClassName("Team");
+for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", teamss, true);
+} 
+}
+
+function teamss(){
+  document.getElementById("main-Teams").style.display = "none";
 }
 </script>
 </body>
