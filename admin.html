@@ -10,8 +10,8 @@
 <body>
 
 <div class="sidenav">
-  <a href="#">Ligas</a>
-  <a href="#">Services</a>
+    <a href="C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin.html">Ligas</a>
+  <a href="C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
@@ -71,7 +71,7 @@
 
   <tr>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -81,7 +81,7 @@
       </div>
       </td>
       <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -91,7 +91,7 @@
       </div>
     </td>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -101,7 +101,7 @@
       </div>
     </td>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -113,7 +113,7 @@
     </tr>
     <tr>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -123,7 +123,7 @@
       </div>
       </td>
       <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -133,7 +133,7 @@
       </div>
     </td>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -143,7 +143,7 @@
       </div>
     </td>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -154,7 +154,7 @@
     </td>
     </tr><tr>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -164,7 +164,7 @@
       </div>
       </td>
       <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -174,7 +174,7 @@
       </div>
     </td>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -184,7 +184,7 @@
       </div>
     </td>
     <td>
-      <div class="Team" id="Team" onclick="Liga()">
+      <div class="Team" id="Team" onclick="Team()">
         <span class="Team-abbreviation">
           BOS
         </span>
@@ -196,15 +196,306 @@
     </tr>
   </table>
   <div class="ABM">
-  <button>Agregar</button>
-  <button>Modificar</button>
-  <button onclick="elim()">Eliminar</button></div>
+  <button id="Agregar">Agregar</button>
+  <button id="Modificar">Modificar</button>
+  <button id="Eliminar" onclick="elim()">Eliminar</button></div>
   
 </div>
+<div class="new-Team" id="new-Team">
+<table>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre
+        </span>
+        <input type="text" name="Nombre">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia
+        </span>
+        <input  type="text" name="Historia">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Localidad
+        </span>
+        <input  type="text" name="Historia">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Escudo (Url)
+        </span>
+        <input  type="text" name="Escudo">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Principal
+        </span>
+        <select>
+          <option style="background-color: #d11c08" value="volvo">Red</option>
+          <option style="background-color: #e64f3e"value="saab">LightRed</option>
+          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
+          <option style="background-color: #f58916"value="audi">Orange</option>
+        </select>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Secundario
+        </span>
+        <select>
+          <option style="background-color: #d11c08" value="volvo">Red</option>
+          <option style="background-color: #e64f3e"value="saab">LightRed</option>
+          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
+          <option style="background-color: #f58916"value="audi">Orange</option>
+        </select>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Estadio
+        </span>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<ul id="myUL">
+  <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
+  <li><a href="#">Agnes</a></li>
+
+  <li><a href="#">Billy</a></li>
+  <li><a href="#">Bob</a></li>
+
+  <li><a href="#">Calvin</a></li>
+  <li><a href="#">Christina</a></li>
+  <li><a href="#">Cindy</a></li>
+</ul>
+      </div>
+    </td>
+  </tr>
+
+</table>
+
+<div >
+<button onclick="algo()">
+  Agregar
+</button>  
+</div>
+</div>
+<div class="edit-Team" id="edit-Team">
+  <table>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre
+        </span>
+        <input type="text" name="Nombre" value="Boston Celtics">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia
+        </span>
+        <input  type="text" name="Historia" value="No tiene">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Localidad
+        </span>
+        <input  type="text" name="Historia" value="Boston">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Escudo (Url)
+        </span>
+        <input  type="text" name="Escudo" value="Url">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Principal
+        </span>
+        <select>
+          <option style="background-color: #d11c08" value="volvo">Red</option>
+          <option style="background-color: #e64f3e"value="saab">LightRed</option>
+          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
+          <option style="background-color: #f58916"value="audi">Orange</option>
+        </select>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Secundario
+        </span>
+        <select>
+          <option style="background-color: #d11c08" value="volvo">Red</option>
+          <option style="background-color: #e64f3e"value="saab">LightRed</option>
+          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
+          <option style="background-color: #f58916"value="audi">Orange</option>
+        </select>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Estadio
+        </span>
+        <input type="text" id="myInput" onkeyup="myFunction()" value="TD Garden" title="Type in a name">
+
+<ul id="myUL">
+  <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
+  <li><a href="#">Agnes</a></li>
+
+  <li><a href="#">Billy</a></li>
+  <li><a href="#">Bob</a></li>
+
+  <li><a href="#">Calvin</a></li>
+  <li><a href="#">Christina</a></li>
+  <li><a href="#">Cindy</a></li>
+</ul>
+      </div>
+    </td>
+  </tr>
+
+</table>
+</div>
+<div class="new-Team" id="info-Team">
+<table>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre:
+        </span>
+        <span style="color: black">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia:
+        </span>
+        <span style="color: black">
+          No tiene
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Localidad:
+        </span>
+        <span style="color: black">
+          Boston
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Principal:
+        </span>
+        <span style="color: black">
+          Red
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Secundario:
+        </span>
+        <span style="color: black">
+          Yellow
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Estadio:
+        </span>
+        <span style="color: black">
+          TD Garden
+        </span>
+      </div>
+    </td>
+  </tr></table>
+
+<div>
+<button onclick="Volver()">
+  Volver
+</button>  
+</div>
+</div>
 <script type="text/javascript">
+  document.getElementById("Agregar").addEventListener ("click", Agregar, true);
+  document.getElementById("Modificar").addEventListener ("click", Modificar, true);
   var x = document.getElementsByClassName("Liga");
   for (var i = 0; i < x.length; i++) {
     x[i].addEventListener ("click", Liga, true);
+}
+function Agregar(){
+  document.getElementById("main-Teams").style.display = "none";
+  document.getElementById("new-Team").style.display = "block";
+}
+function Modificar(){
+  document.getElementById("main-Teams").style.display = "none";
+  document.getElementById("edit-Team").style.display = "block";
 }
 function Liga(){
   document.getElementById("main-Ligas").style.transition = "0.7s";
@@ -224,6 +515,40 @@ for (var i = 0; i < x.length; i++) {
 
 function teamss(){
   document.getElementById("main-Teams").style.display = "none";
+}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            document.getElementById("myUL").style.display = "none";
+        } else {
+            li[i].style.display = "none";
+            document.getElementById("myUL").style.display = "block";
+        }
+    }
+}
+function select_stadium(x){
+  x.style.backgroundColor  ="#1673e6";
+  x.style.color  ="white";
+}
+function Team(){
+  document.getElementById("main-Teams").style.display = "none";
+  document.getElementById("info-Team").style.display = "block";
+}
+function Volver(){
+  document.getElementById("main-Teams").style.display = "block";
+  document.getElementById("info-Team").style.display = "none";
+
+}
+function Estadios(){
+
 }
 </script>
 </body>

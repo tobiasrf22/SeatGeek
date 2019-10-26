@@ -136,6 +136,19 @@ body {
 
 
 }
+.new-Team button{
+  padding: 10px;
+  border-radius: 10px;
+  border-style: none;
+
+  background-color: #1673e6;
+  color:white;
+  
+  font-size: 15px;
+  cursor:pointer;
+
+
+}
 .main-Teams button:hover{
     background-color:#1762bf;
 }
@@ -156,6 +169,7 @@ body {
 .new-Team{
   margin-left: 200px;
   padding: 10px;
+  display: none;
 }
 .new-Team table tr td{
   padding: 10px;
@@ -170,6 +184,25 @@ body {
   border-color: grey;
   border-width: thin;
 }
+
+.edit-Team{
+  margin-left: 200px;
+  padding: 10px;
+  display: none;
+}
+.edit-Team table tr td{
+  padding: 10px;
+  padding-right: 50px;
+}
+.edit-Team table tr td span{
+  color: #636363;
+}
+.edit-Team input{
+  border-radius: 5px;
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+}
 #myInput {
   background-image: url('/css/searchicon.png');
   background-position: 10px 12px;
@@ -177,7 +210,7 @@ body {
   width: 100%;
   font-size: 16px;
   padding: 5px;
-  border: 1px solid #ddd;
+  border: thin solid grey;
   margin-bottom: 12px;
 }
 
@@ -204,4 +237,32 @@ body {
 
 #myUL li a:hover:not(.header) {
   background-color: #eee;
+}
+
+.new-Stadium{
+  margin-left: 200px;
+  padding: 10px;
+  display: none;
+}
+.new-Stadium table tr td{
+  padding: 10px;
+  padding-right: 50px;
+}
+.new-Stadium table tr td span{
+  color: #636363;
+}
+.new-Stadium input{
+  border-radius: 5px;
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+}
+.new-Stadium table tr td span a{
+  text-decoration: none;
+ border-style: solid;
+ border-color: grey;
+ border-radius: 8px;
+ border-width: thin;
+ padding: 10px;
+  color: #636363; 
 }
