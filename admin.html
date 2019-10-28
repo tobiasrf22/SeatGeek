@@ -4,16 +4,17 @@
 
 <link rel = "stylesheet"
    type = "text/css"
-   href = "C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin.css" />
+   href = "C:\Users\tobia\Desktop\SeatGeek-master\admin.css" />
    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
 
 <div class="sidenav">
-    <a href="C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin.html">Ligas</a>
-  <a href="C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin.html">Ligas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
 </div>
 
 
@@ -62,10 +63,52 @@
     </td>
     
   </tr></table><div class="ABM">
-  <button>Agregar</button>
+  <button onclick="AgregarLiga()">Agregar</button>
   <button>Modificar</button>
   <button >Eliminar</button></div>
 </div>
+<div class="new-Team" id="new-Liga"><table>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre
+        </span>
+        <input type="text" name="Nombre">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia
+        </span>
+        <input  type="text" name="Historia">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Pais
+        </span>
+        <input  type="text" name="Historia">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Escudo (Url)
+        </span>
+        <input  type="text" name="Escudo">
+      </div>
+    </td>
+  </tr></table><div><button onclick="algo()">
+  Agregar</button>  </div></div>
 <div class="main-Teams" id="main-Teams">
   <table>
 
@@ -201,8 +244,7 @@
   <button id="Eliminar" onclick="elim()">Eliminar</button></div>
   
 </div>
-<div class="new-Team" id="new-Team">
-<table>
+<div class="new-Team" id="new-Team"><table>
   <tr>
     <td>
       <div class="Container">
@@ -279,9 +321,7 @@
         <span style="display: block;">
           Estadio
         </span>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-
-<ul id="myUL">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><ul id="myUL">
   <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
   <li><a href="#">Agnes</a></li>
 
@@ -290,20 +330,11 @@
 
   <li><a href="#">Calvin</a></li>
   <li><a href="#">Christina</a></li>
-  <li><a href="#">Cindy</a></li>
-</ul>
+  <li><a href="#">Cindy</a></li></ul>
       </div>
     </td>
-  </tr>
-
-</table>
-
-<div >
-<button onclick="algo()">
-  Agregar
-</button>  
-</div>
-</div>
+  </tr></table><div><button onclick="algo()">
+  Agregar</button>  </div></div>
 <div class="edit-Team" id="edit-Team">
   <table>
   <tr>
@@ -382,9 +413,7 @@
         <span style="display: block;">
           Estadio
         </span>
-        <input type="text" id="myInput" onkeyup="myFunction()" value="TD Garden" title="Type in a name">
-
-<ul id="myUL">
+        <input type="text" id="myInput" onkeyup="myFunction()" value="TD Garden" title="Type in a name"><ul id="myUL">
   <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
   <li><a href="#">Agnes</a></li>
 
@@ -393,16 +422,11 @@
 
   <li><a href="#">Calvin</a></li>
   <li><a href="#">Christina</a></li>
-  <li><a href="#">Cindy</a></li>
-</ul>
+  <li><a href="#">Cindy</a></li></ul>
       </div>
     </td>
-  </tr>
-
-</table>
-</div>
-<div class="new-Team" id="info-Team">
-<table>
+  </tr></table></div>
+<div class="new-Team" id="info-Team"><table>
   <tr>
     <td>
       <div class="Container">
@@ -474,20 +498,20 @@
         </span>
       </div>
     </td>
-  </tr></table>
+  </tr></table><div><button onclick="Volver()">
+  Volver</button>  </div></div>
 
-<div>
-<button onclick="Volver()">
-  Volver
-</button>  
-</div>
-</div>
+
 <script type="text/javascript">
   document.getElementById("Agregar").addEventListener ("click", Agregar, true);
   document.getElementById("Modificar").addEventListener ("click", Modificar, true);
   var x = document.getElementsByClassName("Liga");
   for (var i = 0; i < x.length; i++) {
     x[i].addEventListener ("click", Liga, true);
+}
+function AgregarLiga(){
+  document.getElementById("main-Ligas").style.display = "none";
+  document.getElementById("new-Liga").style.display = "block";
 }
 function Agregar(){
   document.getElementById("main-Teams").style.display = "none";

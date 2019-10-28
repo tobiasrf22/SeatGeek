@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "C:\Users\tobia\Desktop\SeatGeek-master\admin.css" />
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin.html">Ligas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
+</div>
+
+
+<div class="main-Ligas" id="main-artists">
+  <table>
+
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NBA
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          SAF
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          MLB
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NHL
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NFL
+        </span>
+      </div>
+    </td>
+    
+  </tr></table><div class="ABM">
+  <button onclick="Agregar()">Agregar</button>
+  <button onclick="Modificar()">Modificar</button>
+  <button onclick="Eliminar()">Eliminar</button></div></div></div>
+<div class="new-Team" id="new-artist"><table>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre
+        </span>
+        <input type="text" name="Nombre">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia
+        </span>
+        <input  type="text" name="Historia">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Foto (Url)
+        </span>
+        <input  type="text" name="Escudo">
+      </div>
+    </td>
+  </tr></table><div ><button onclick="algo()">
+  Agregar</button>  </div></div>
+<div class="edit-Team" id="edit-artist">
+  <table>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre
+        </span>
+        <input type="text" name="Nombre" value="Boston Celtics">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia
+        </span>
+        <input  type="text" name="Historia" value="No tiene">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Foto (Url)
+        </span>
+        <input  type="text" name="Escudo" value="Url">
+      </div>
+    </td>
+  </tr></table></div>
+<div class="new-Team" id="info-artist"><table>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre:
+        </span>
+        <span style="color: black">
+          Boston Celtics
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia:
+        </span>
+        <span style="color: black">
+          No tiene
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Localidad:
+        </span>
+        <span style="color: black">
+          Boston
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Principal:
+        </span>
+        <span style="color: black">
+          Red
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Secundario:
+        </span>
+        <span style="color: black">
+          Yellow
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Estadio:
+        </span>
+        <span style="color: black">
+          TD Garden
+        </span>
+      </div>
+    </td>
+  </tr></table><div><button onclick="Volver()">
+  Volver</button>  </div></div>
+<script type="text/javascript">
+  document.getElementById("Agregar").addEventListener ("click", Agregar, true);
+  document.getElementById("Modificar").addEventListener ("click", Modificar, true);
+  var x = document.getElementsByClassName("Liga");
+  for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", Liga, true);}
+
+    function Agregar(){
+  document.getElementById("main-artists").style.display = "none";
+  document.getElementById("new-artist").style.display = "block";}
+
+  function Modificar(){
+  document.getElementById("main-artists").style.display = "none";
+  document.getElementById("edit-artist").style.display = "block";}
+
+
+
+  function elim(){
+ var x = document.getElementsByClassName("Team");for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", teamss, true);
+} 
+}
+
+function teamss(){
+  document.getElementById("main-Teams").style.display = "none";
+}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            document.getElementById("myUL").style.display = "none";
+        } else {
+            li[i].style.display = "none";
+            document.getElementById("myUL").style.display = "block";
+        }
+    }
+}
+function select_stadium(x){
+  x.style.backgroundColor  ="#1673e6";
+  x.style.color  ="white";
+}
+function Liga(){
+  document.getElementById("main-artists").style.display = "none";
+  document.getElementById("info-artist").style.display = "block";
+}
+function Volver(){
+  document.getElementById("main-Teams").style.display = "block";
+  document.getElementById("info-Team").style.display = "none";
+
+}
+function Estadios(){
+
+}
+</script>
+</body>
+</html>
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "C:\Users\tobia\Desktop\SeatGeek-master\admin.css" />
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin.html">Ligas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
+</div>
+
+
+<div class="main-Ligas" id="main-Users">
+  <span style="padding: 10px;color: grey">
+    Usuarios Administradores
+  </span>
+  <table>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          Tobiasrf22@gmail.com
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          Tobiasrf22@gmail.com
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          Tobiasrf22@gmail.com
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          Tobiasrf22@gmail.com
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          Tobiasrf22@gmail.com
+        </span>
+      </div>
+    </td>
+    
+  </tr></table><div class="ABM">
+  <button onclick="Agregar()">Agregar</button>
+  <button >Eliminar</button></div>
+</div>
+  
+</div>
+<div class="edit-Team" id="agre-Users">
+  <table>
+    <tr>
+      <td>
+        <div>
+          <span>Usuarios</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+    <td>
+      <div class="Container">
+
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><ul id="myUL" style="display: block;">
+  <li><a href="#" onclick="select_stadium(this)">Adele@gmail.com</a></li>
+  <li><a href="#">Tobiasrf22@gmail.com</a></li>
+
+  <li><a href="#">Pepe@gmail.com</a></li>
+  <li><a href="#">Reina@gmail.com</a></li>
+
+  <li><a href="#">Aaaj@gmail.com</a></li>
+  <li><a href="#">Jaaa@gmail.com</a></li>
+  <li><a href="#">Boke@gmail.com</a></li></ul>
+      </div>
+    </td>
+  </tr>
+  </table>
+</div>
+
+
+
+<script type="text/javascript">
+  document.getElementById("Agregar").addEventListener ("click", Agregar, true);
+  document.getElementById("Modificar").addEventListener ("click", Modificar, true);
+  var x = document.getElementsByClassName("Liga");
+  for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", Liga, true);
+}
+
+function Agregar(){
+    document.getElementById("main-Users").style.display = "none";
+  document.getElementById("agre-Users").style.display = "block";
+}
+
+
+
+function teamss(){
+  document.getElementById("main-Teams").style.display = "none";
+}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+function select_stadium(x){
+  x.style.backgroundColor  ="#1673e6";
+  x.style.color  ="white";
+}
+function Team(){
+  document.getElementById("main-Teams").style.display = "none";
+  document.getElementById("info-Team").style.display = "block";
+}
+function Volver(){
+  document.getElementById("main-Teams").style.display = "block";
+  document.getElementById("info-Team").style.display = "none";
+
+}
+function Estadios(){
+
+}
+</script>
+</body>
+</html>
+

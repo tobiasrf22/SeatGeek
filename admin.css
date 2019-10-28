@@ -1,5 +1,7 @@
 body {
   font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .sidenav {
@@ -149,7 +151,23 @@ body {
 
 
 }
+.new-Stadium button{
+  padding: 10px;
+  border-radius: 10px;
+  border-style: none;
+
+  background-color: #1673e6;
+  color:white;
+  
+  font-size: 15px;
+  cursor:pointer;
+
+
+}
 .main-Teams button:hover{
+    background-color:#1762bf;
+}
+.new-Stadium button:hover{
     background-color:#1762bf;
 }
 
@@ -265,4 +283,50 @@ body {
  border-width: thin;
  padding: 10px;
   color: #636363; 
+}
+
+.Games{
+  margin-top: 0px;
+  border-color: red;
+  border-style: ;
+  width: 527px;
+  border-radius: 10px;
+  cursor:pointer;
+}
+.Games .left {
+  height: 60px;
+  width: 80px;
+  border-color: blue;
+  border-style: ;
+  transform: scale(.8);
+}
+.Games .left p{
+  margin-top:5px;
+}
+
+.Games .right{
+  float: left;
+  margin-left: 15%;
+  margin-top: -81px;  
+  border-color: green;
+  border-style: ;
+  transform: scale(.8);
+  font-size: 18px;
+}
+
+.Games .right p{
+
+}
+
+.Games:hover{
+  box-shadow: 5px 19px 40px 9px rgba(227,227,227,1););
+  transition: 1s
+}
+.Ticket{
+  padding: 10px;
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+  border-radius: 10px;
+  cursor: pointer;
 }

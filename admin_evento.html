@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "C:\Users\tobia\Desktop\SeatGeek-master\admin.css" />
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin.html">Ligas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
+  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
+</div>
+
+
+
+<div class="new-Stadium" id="Eventos" style="display: block;">
+  <table>
+    <tr>
+      <td>
+        <div class="Container">
+          <span style="display: block;">Tipo de Evento</span>
+          <select>
+            <option>NBA</option>
+            <option>MLB</option>
+            <option>Artistas</option>
+          </select>
+          <select>
+            <option>Boston</option>
+            <option>Hawks</option>
+            <option>Nets</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0px;">
+        <div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)" onclick="Partido()"> 
+            <div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+            <div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Td Garden-Boston</p> </div>   
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0px;">
+        <div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+            <div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+            <div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Td Garden-Boston</p> </div>   
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="ABM">
+  <button id="Agregar">Agregar</button>
+  <button id="Modificar">Modificar</button>
+  <button id="Eliminar" onclick="elim()">Eliminar</button>
+</div></div>
+<div class="new-Stadium" id="new-Partido" style="display: none;">
+  <table>
+    <div id="Partido">
+    <tr>
+      <td>
+        <span style="display: block;">Visitante</span>
+        <input type="" name="">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span style="display: block;">Fecha y Hora</span>
+        <input type="date" name="date" id="dateinput" >
+        <input type="time" name="date" id="dateinput" >
+      </td>
+    </tr>
+    </div>
+  </table></div>
+<div class="new-Stadium" id="info-Partido" >
+  <table>
+    <tr>
+      <td>
+        <div class="Container">
+          <span style="display: block;">Participantes</span>
+          <span style="color: black">Boston Celtics vs Atlanta Hawks</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="Container">
+          <span style="display: block;">Fecha y Hora</span>
+          <span style="color: black">11/12/2019 <b>·</b> 16:00hs</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="Container">
+          <span style="display: block;">Tickets</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="Ticket">
+          <span style="color: green;font-weight: bolder;">$180</span>
+          <span>Plate Media</span>
+          <span style="display: block;">Disponibles: 20</span>
+        </div>
+      </td>
+
+    </tr>
+  </table>
+  <button>
+    Agregar
+  </button>
+  <button>
+    Modificar
+  </button>
+  <button>
+    Eliminar
+  </button>
+</div>
+
+<script type="text/javascript">
+
+
+  function Partido(){
+    document.getElementById("Eventos").style.display = "none";
+    document.getElementById("info-Partido").style.display = "block";
+  }
+  function sel_liga(){
+    document.getElementById("Equipo").style.display = "";
+  }
+
+
+  document.getElementById("Agregar").addEventListener ("click", Agregar, true);
+  document.getElementById("Modificar").addEventListener ("click", Modificar, true);
+  var x = document.getElementsByClassName("Liga");
+  for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", Liga, true);
+}
+function Agregar(){
+  document.getElementById("Eventos").style.display = "none";
+  document.getElementById("new-Partido").style.display = "block";
+}
+function Modificar(){
+  document.getElementById("main-Teams").style.display = "none";
+  document.getElementById("edit-Team").style.display = "block";
+}
+function Liga(){
+  document.getElementById("main-Ligas").style.transition = "0.7s";
+  document.getElementById("main-Ligas").style.marginLeft = "-2000px";
+  document.getElementById("main-Teams").style.transition = "1s";
+  document.getElementById("main-Teams").style.display = "block";
+  document.getElementById("main-Teams").style.marginLeft = "200px";
+  document.getElementById("main-Ligas").style.display = "none";
+}
+
+function elim(){
+ var x = document.getElementsByClassName("Team");
+for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", teamss, true);
+} 
+}
+
+function teamss(){
+  document.getElementById("main-Teams").style.display = "none";
+}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            document.getElementById("myUL").style.display = "none";
+        } else {
+            li[i].style.display = "none";
+            document.getElementById("myUL").style.display = "block";
+        }
+    }
+}
+function select_stadium(x){
+  x.style.backgroundColor  ="#1673e6";
+  x.style.color  ="white";
+}
+function Team(){
+  document.getElementById("main-Teams").style.display = "none";
+  document.getElementById("info-Team").style.display = "block";
+}
+function Volver(){
+  document.getElementById("main-Teams").style.display = "block";
+  document.getElementById("info-Team").style.display = "none";
+
+}
+function Estadios(){
+
+}
+</script>
+</body>
+</html>
+
