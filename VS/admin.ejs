@@ -37,7 +37,7 @@
       }
       
       .main-Teams {
-        margin-left: -2000px; 
+        margin-left: 200px; 
         display:none;/* Same as the width of the sidenav */
       }
       
@@ -341,7 +341,7 @@
 <body>
 
 <div class="sidenav">
-  <a href="http://localhost:8080/">Ligas</a>
+  <a href="http://localhost:8082/">Ligas</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
@@ -408,17 +408,27 @@
         <span style="display: block;">
           Nombre
         </span>
-        <input type="text" name="Nombre">
+        <input id="inp_Nombre" type="text" name="Nombre">
       </div>
     </td>
   </tr>
+  <tr>
+      <td>
+        <div class="Container">
+          <span style="display: block;">
+            Abbreviation
+          </span>
+          <input id="inp_AB type="text" name="Nombre">
+        </div>
+      </td>
+    </tr>
   <tr>
     <td>
       <div class="Container">
         <span style="display: block;">
           Historia
         </span>
-        <input  type="text" name="Historia">
+        <input id="inp_Historia" type="text" name="Historia">
       </div>
     </td>
   </tr>
@@ -428,7 +438,7 @@
         <span style="display: block;">
           Localidad
         </span>
-        <input  type="text" name="Historia">
+        <input id="inp_Localidad"  type="text" name="Historia">
       </div>
     </td>
   </tr>
@@ -438,7 +448,7 @@
         <span style="display: block;">
           Escudo (Url)
         </span>
-        <input  type="text" name="Escudo">
+        <input id="inp_Escudo" type="text" name="Escudo">
       </div>
     </td>
   </tr>
@@ -448,7 +458,7 @@
         <span style="display: block;">
           Color Principal
         </span>
-        <select>
+        <select id="inp_ColorP">
           <option style="background-color: #d11c08" value="volvo">Red</option>
           <option style="background-color: #e64f3e"value="saab">LightRed</option>
           <option style="background-color: #821e12"value="mercedes">DarkRed</option>
@@ -463,11 +473,11 @@
         <span style="display: block;">
           Color Secundario
         </span>
-        <select>
-          <option style="background-color: #d11c08" value="volvo">Red</option>
-          <option style="background-color: #e64f3e"value="saab">LightRed</option>
-          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
-          <option style="background-color: #f58916"value="audi">Orange</option>
+        <select id="inp_ColorS">
+          <option style="background-color: #d11c08" value="d11c08">Red</option>
+          <option style="background-color: #e64f3e"value="e64f3e">LightRed</option>
+          <option style="background-color: #821e12"value="821e12">DarkRed</option>
+          <option style="background-color: #f58916"value="f58916">Orange</option>
         </select>
       </div>
     </td>
@@ -478,7 +488,7 @@
         <span style="display: block;">
           Estadio
         </span>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><ul id="myUL">
+        <input  type="text" id="inp_Estadio" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><ul id="myUL">
   <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
   <li><a href="#">Agnes</a></li>
 
@@ -493,7 +503,7 @@
 </tr>
 </table>
 <div>
-  <button onclick="algo()">
+  <button onclick="insertarEquipo()">
   Agregar</button>
 </div>
 </div>
@@ -589,83 +599,9 @@
     </td>
   </tr></table>
 </div>
-<div class="new-Team" id="info-Team"><table>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Nombre:
-        </span>
-        <span style="color: black">
-          Boston Celtics
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Historia:
-        </span>
-        <span style="color: black">
-          No tiene
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Localidad:
-        </span>
-        <span style="color: black">
-          Boston
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Color Principal:
-        </span>
-        <span style="color: black">
-          Red
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Color Secundario:
-        </span>
-        <span style="color: black">
-          Yellow
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Estadio:
-        </span>
-        <span style="color: black">
-          TD Garden
-        </span>
-      </div>
-    </td>
-  </tr>
-</table>
-  <div>
-    <button onclick="Volver()">
-  Volver</button>  </div></div>
+<div class="new-Team" id="info-Team">
+  <table>
+</div>
 
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
@@ -730,8 +666,12 @@ const firebaseConfig = {
     document.getElementById("main-Ligas").innerHTML = str;
 });
 
+var LigaEnUso=""
 LeerEquipos=(Liga)=>{
-  db.collection('Liga').doc(Liga).collection(Equipos).get().then(function(querySnapshot) {
+  LigaEnUso=Liga
+  document.getElementById("main-Ligas").style.display = "none";
+  
+  db.collection('Liga').doc(Liga).collection('Equipos').get().then(function(querySnapshot) {
     var c=0;
 var str = '<table> <tr>';
 querySnapshot.forEach(function(doc) {
@@ -739,29 +679,157 @@ querySnapshot.forEach(function(doc) {
     console.log(doc.id, " => ", doc.data().Nombre);
     var my_name = doc.data().Nombre;
     str += `<td>
-      <div class="Team" id="Team" onclick="Team('${my_name}')">
-        <span class="Team-abbreviation">
+      <div  class="Team" id="Team" onclick="Team('${my_name}')">
+        <span style="background-color: #${doc.data().ColorP};" class="Team-abbreviation">
             ${doc.data().AB}
         </span>
-        <span class="Team-name">
+        <span  class="Team-name">
             ${my_name}
         </span>
       </div>
       </td>`
-    c+=1
-    
-});
-if (c==3){
+      console.log(c)
+      c+=1
+    console.log(c)
+    if (c==3){
     str +='</tr><tr>'
       c=0;
-}
-str += '</tr> </table>';
+}    
+});
+
+str += '</tr> </table>  <div class="ABM"><button onclick="AgregarEquipo()" id="Agregar">Agregar</button><button id="Modificar">Modificar</button><button id="Eliminar" onclick="elim()">Eliminar</button></div> ';
 console.log(str)
 document.getElementById("main-Teams").innerHTML = str;
+document.getElementById("main-Teams").style.display = "block";
 });
 }
 
 
+var EquipoEnUso=""
+LeerInfoEquipos=(Equipo)=>{
+  document.getElementById("main-Ligas").style.display = "none";
+  EquipoEnUso=Equipo
+  db.collection('Liga').doc(LigaEnUso).collection('Equipos').where("Nombre", "==", Equipo).get().then(function(querySnapshot) {
+    var c=0;
+var str = '<table> <tr>';
+querySnapshot.forEach(function(doc) {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data().Nombre);
+    var my_name = doc.data().Nombre;
+    str += `<tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Nombre:
+        </span>
+        <span style="color: black">
+          ${my_name}
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Historia:
+        </span>
+        <span style="color: black">
+            ${doc.data().Historia}
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Localidad:
+        </span>
+        <span style="color: black">
+            ${doc.data().Localidad}
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Principal:
+        </span>
+        <span style="color: #${doc.data().ColorP}">
+            #${doc.data().ColorP}
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Color Secundario:
+        </span>
+        <span style="color: #${doc.data().ColorS}">
+            #${doc.data().ColorS}
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Container">
+        <span style="display: block;">
+          Estadio:
+        </span>
+        <span style="color: black">
+          TD Garden
+        </span>
+      </div>
+    </td>`
+
+    
+});
+
+str += '</tr></table><div><button onclick="Volver()">Volver</button>  </div>';
+console.log(str)
+document.getElementById("info-Team").innerHTML = str;
+document.getElementById("info-Team").style.display = "block";
+document.getElementById("main-Teams").style.display = "none";
+});
+}
+
+
+insertarEquipo=()=>{
+    var inp_Nombre = document.getElementById("inp_Nombre").value;
+    var inp_Nombre = document.getElementById("inp_AB").value;
+    var inp_Historia = document.getElementById("inp_Historia").value;
+    var inp_Localidad = document.getElementById("inp_Localidad").value;
+    var inp_Escudo = document.getElementById("inp_Escudo").value;
+    var inp_ColorP = document.getElementById("inp_ColorP").value;
+    var inp_ColorS = document.getElementById("inp_ColorS").value;
+    var inp_Estadio = document.getElementById("inp_Estadio").value;
+    alert(LigaEnUso)
+    db.collection("Liga").doc(LigaEnUso).collection('Equipos').add({
+    Nombre: inp_Nombre,
+    AB:inp_AB,
+    Historia :inp_Historia,
+    Localidad:inp_Localidad,
+    Escudo:inp_Escudo,
+    ColorP:inp_ColorP,
+    ColorS :inp_ColorS,
+    Estadio:inp_Estadio
+
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+document.getElementById("new-Team").style.display = "none";
+LeerEquipos(LigaEnUso)
+}
 
 
 function AgregarLiga(){
@@ -774,7 +842,7 @@ function AgregarLiga(){
   for (var i = 0; i < x.length; i++) {
     x[i].addEventListener ("click", Liga, true);
 }
-function Agregar(){
+function AgregarEquipo(){
   document.getElementById("main-Teams").style.display = "none";
   document.getElementById("new-Team").style.display = "block";
 }
@@ -820,9 +888,9 @@ function select_stadium(x){
   x.style.backgroundColor  ="#1673e6";
   x.style.color  ="white";
 }
-function Team(){
-  document.getElementById("main-Teams").style.display = "none";
-  document.getElementById("info-Team").style.display = "block";
+function Team(a){
+  LeerInfoEquipos(a)
+  
 }
 function Volver(){
   document.getElementById("main-Teams").style.display = "block";
