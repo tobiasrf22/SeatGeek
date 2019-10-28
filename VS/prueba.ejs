@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "C:\Users\PCTOUCH\Desktop\SeatGeek-master\admin.css" />
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="#" onclick="algo2()">Ligas</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<div class="main-Ligas" id="main-Ligas" style="width: 100%">
+  <table>
+
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          TD Garden
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          Chase Center
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          Pepsi Center
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NHL
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          MLB
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NHL
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          MLB
+        </span>
+      </div>
+    </td>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NHL
+        </span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Liga" id="Liga" onclick="Liga()">
+        <span>
+          NFL
+        </span>
+      </div>
+    </td>
+    
+  </tr>
+
+</table><div class="ABM">
+  <button>Agregar</button>
+  <button>Modificar</button>
+  <button >Eliminar</button></div>
+</div>
+
+<script type="text/javascript">
+  
+function Liga(){
+  document.getElementById("main-Ligas").style.transition = "0.7s";
+  document.getElementById("main-Ligas").style.marginLeft = "-1000px";
+  document.getElementById("main-Teams").style.transition = "0.7s";
+  document.getElementById("main-Teams").style.marginLeft = "200px";
+}
+function elim(){
+ var x = document.getElementsByClassName("Team");
+for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener ("click", teamss, true);
+} 
+}
+
+function teamss(){
+  document.getElementById("main-Teams").style.display = "none";
+}
+function algo(){
+  document.getElementById("new-Team").style.display = "none";
+}
+function algo2(){
+  document.getElementById("new-Team").style.display = "block";
+}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            document.getElementById("myUL").style.display = "none";
+        } else {
+            li[i].style.display = "none";
+            document.getElementById("myUL").style.display = "block";
+        }
+    }
+}
+function select_stadium(x){
+  x.style.backgroundColor  ="#1673e6";
+  x.style.color  ="white";
+}
+</script>
+</body>
+</html>
+

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+ background-image: url("https://i.pinimg.com/originals/72/96/0f/72960f5122fb1f3e24259821e060cb4a.jpg");
+ background-size: 100% 330px;
+ background-repeat: no-repeat;
+}
+
+.carac{
+	margin-left: 13.5%;
+}
+.carac tr td div{
+	background-image: url("https://images.emojiterra.com/twitter/v12/512px/1f90d.png");
+	background-size: 17px;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;	
+	padding-left: 30px;
+	padding-right: 40px;
+}
+.path a , span{
+	color: #b8b8b8;
+	text-decoration:none;
+}
+.path a:hover{
+	color:white;
+}
+table{
+	color: white;
+}
+#tittle{
+	margin-top: 9.5%;
+	margin-left: 18%;
+	transform: scale(1.3);
+	width: 400px;
+}
+#path{
+	color: #b8b8b8;
+	text-decoration:none;
+	position: absolute;
+	top:23%;
+	left: 14%;
+}
+.path{
+	position: absolute;
+	top:23%;
+	left: 14%;
+}
+
+
+#topper{
+	background-color: green;
+	width: all;
+	height: 300px;
+	padding: 3000px;
+	margin: 0px;
+	position: absolute;
+}
+
+.navbar {
+padding-left: 31%;
+background-image: transparent;
+  overflow: hidden;
+    margin-right: 14%;
+
+}
+
+.navbar a {
+  float: right;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+
+
+}
+
+
+
+.navbar .right{
+    float:right;
+    padding-right: 45%;
+}
+
+.navbar .right #Out {
+    display: none;
+}
+
+.navbar .Link {
+  float: right;
+  font-size: 16px;;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black;
+
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+  
+
+}
+
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+
+}
+
+.navbar a:hover {
+  background-color: white;
+  color: #1673e6;
+  border-radius: 10px;
+
+}
+ .dropdown:hover .dropbtn {
+  background-color: white;
+  color: #1673e6;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+
+}
+
+.dropdown-content {
+  float: right;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: all;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0px;
+  border-bottom-right-radius:0px ;
+  border-bottom-left-radius: 10px;
+  padding-top: 6px;
+  padding-bottom: 2.6px;
+
+}
+
+.dropdown-content a {
+  float: none;
+  color: #1673e6;
+  padding: 11px 22.4px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #e0e8ff;
+
+}
+
+.dropdown .dropdown-content #top {
+  border-top-right-radius: 10px;
+
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+
+}
+
+.dropdown-content .MLB {
+    display: none;
+}
+
+.dropdown-content a:hover  table {
+      display: block;
+      color: grey;
+}
+
+.dropdown-content .MLB:hover {
+      color: #1673e6;
+}
+.dropdown-content a table{
+  margin-left: 55px;
+  top:-7px;
+  position: absolute;
+  background-color: #f9f9f9;
+  display: none;
+  padding-top:10px; 
+}
+
+#second{
+  margin-left:210px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+
+.dropdown-content a table td{
+  width: 10%;
+}
+.dropdown-content a table a{
+color: grey;
+}
+
+.dropdown-content a table table{
+  margin-left: 800px;
+}
+
+
+input[type=text] {
+  width: 5px;
+  height: 50px;
+  box-sizing: border-box;
+
+  font-size: 17px;
+  background-color: white;
+  background-image: url('https://cdn1.imggmi.com/uploads/2019/9/23/a536f883220a8a8545780dd422c33849-full.png');
+  background-position: 12px 12px; 
+  background-repeat: no-repeat;
+  background-size: 26px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border-radius: 10px;
+  border: none;
+  width: 60%;
+  padding-left: 55px;
+
+  font-family:Trebuchet MS;
+  /*padding-top: 20px;
+  padding-bottom: 20px;*/
+}
+
+.search-container{
+  position: absolute;
+  margin-left:  -10%;
+  top :1%;
+  vertical-align: middle;
+  width: 600px;
+  padding-right: -10px;
+  transform: scale(.9);
+}
+
+input[type=text] {
+  background-color: rgba(0,0,0,.5);
+
+}
+
+input[type=text]:focus {
+  transition: .4s;
+  outline: none;
+
+}
+
+input[type=text]:focus,input[type=text]:hover  {
+   background-image: url('https://cdn1.imggmi.com/uploads/2019/9/17/fee81e2d5ab3213d647a91a5dd937185-full.png');
+   background-color: white;
+   opacity: 1;
+  transition: .4s;
+}
+
+.UG select{
+
+	border-radius: 5px;
+	padding: 5px;
+	background-color: white;
+	border-color: #d6d6d6;
+	cursor:pointer;
+}
+
+.UG select:hover{
+
+	color: #1673e6;
+	cursor:pointer;
+}
+
+.UG select option{
+	padding: 10px;
+
+
+}
+
+.HA{
+	position: absolute;
+	top: 0%;
+	left: 35%;
+}
+
+.HA button{
+	padding: 5.5px;
+	border-style: solid;
+  	border-width: 1px;
+  	border-color: #d6d6d6;
+  	background-color: white;
+  	cursor:pointer;
+}
+#Home{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+
+}
+#Away{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.HA button:focus{
+	outline: none;
+}
+.HA button:hover{
+	color: #1673e6;
+	background-color: #e9eef5;
+}
+.Games{
+	margin-top: 30px;
+	border-color: red;
+
+	width: 527px;
+	border-radius: 10px;
+	cursor:pointer;
+}
+.Games .left {
+	height: 60px;
+	width: 80px;
+	border-color: blue;
+
+	transform: scale(.8);
+}
+.Games .left p{
+	margin-top:5px;
+}
+
+.Games .right{
+	float: left;
+	margin-left: 15%;
+	margin-top: -81px;	
+	border-color: green;
+
+	transform: scale(.8);
+	font-size: 18px;
+}
+
+
+
+.Games:hover{
+	box-shadow: 5px 19px 40px 9px rgba(227,227,227,1);
+	transition: 1s;
+}
+.Games .but{
+	float: left;
+	margin-top: -8.7%;
+	margin-left: 50px;
+}
+
+.Games .but button{
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 7px;
+	border-style: none;
+	cursor:pointer;
+	background-color: #1673e6;
+	color: white;
+}
+
+.Games .but button:hover{
+	background-color: #135eba;
+}
+.right-menu{
+	float: right;
+	margin-right: 1%;
+  margin-top: -44px;
+	padding: 10px;
+
+  
+}
+.right-menu a{
+  text-decoration:none;
+ color: black;
+
+}
+.Events{
+  border-radius: 10px;
+  padding: 10px;
+  
+  background-color: #e9eef5;
+  color: #1673e6;
+  text-decoration:none;
+}
+.Events a {
+   color: #1673e6;
+}
+.Parking{
+  border-radius: 10px;
+  padding: 10px;
+
+}
+.Playoff{
+  border-radius: 10px;
+  padding: 10px;
+  padding-right: 100px;
+
+}
+.right-menu a:hover{
+  color: #1673e6;
+
+}
+
+</style>
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "C:\Users\tobia\Desktop\SeatGeek-master\team.css" />
+</head>
+<body>
+
+<div class="navbar">
+        <a href="#home">Sign Up</a>
+        <a id="In" href="#" onclick="googleSignIn()" >Log In</a>
+        <!--<a id="Out" onclick="googleSignout()">Log Out</a>-->
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+<div class="dropdown">
+    <button class="dropbtn" id="Music">Music 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="#">MLB
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+                    <a href="">Atlanta Concerts</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    <a href="#">WWE
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Wrestlemania</a>
+                    <a href="">Wrestlemania</a>
+                    <a href="">Wrestlemania</a>
+                    <a href="">Wrestlemania</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Wrestlemania</a>
+                    <a href="">Wrestlemania</a>
+                    <a href="">Wrestlemania</a>
+                    <a href="">Wrestlemania</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    <a href="#">NFL
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    </div>
+</div>
+<div class="dropdown">
+    <button class="dropbtn" id="Sports">Sports 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="#">MLB
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="#">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+                    <a href="">Red Sox</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    <a href="#">NBA
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+                    <a href="">Boston Celtics</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    <a href="#">NFL
+        <table cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+ 
+                </td>
+            </tr>
+        </table>
+        <table id="second" cellspacing="" style="width:200%">
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+
+ 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+                    <a href="">Patriots</a>
+ 
+                </td>
+            </tr>
+        </table></a>
+    <a href="#">NHL</a>
+</div></div></div>
+
+
+<div class="path"><a href="/home/farappa/Escritorio/SeatGeek-master/asdasd.html">Home</a><span> / </span><a href="/home/farappa/Escritorio/SeatGeek-master/league.html">NBA</a>
+</div>
+<h1 id="tittle" style="color: white">Boston Celtics Tickets</h1>
+<div>
+    <table class="carac">
+    <tr>
+        <td><div>Millions of Customers Served</div></td>
+        <td><div style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/White_check.svg/1200px-White_check.svg.png);">100% Guaranteed</div></td>
+        <td><div style="background-image: url(https://cdn1.imggmi.com/uploads/2019/10/8/24aed404fb3ee1d20a37b41879fba404-full.png);">Low Fees & Transparent Prices</div></td>
+    </tr>
+</table>
+</div>
+
+<div class="UG" style="margin-top: 6%;margin-left: 21.5%;transform: scale(1.2);" ><b style="padding-right: 15%" >Upcoming Games</b>
+<select>
+  <option  value="volvo">Date</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+
+<div class="HA">
+<button id="Home" onclick="Home(this)" > Home</button>
+<button id="Away" onclick="Away(this)" style="margin-left: -6px">Away</button>    
+<select>
+  <option  value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+<div class="right-menu"> 
+
+<div id="Events"class="Events" ><a onclick="Events(this)"href="#">Events</a></div>
+<div id="Parking"class="Parking" ><a onclick="Parking(this)"href="#">Parking Passes</a></div>
+<div id="Playoff"class="Playoff" ><a onclick="Playoff(this)"href="#">Playoff Tickets</a></div>
+
+</div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+<div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
+<div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+<div class="but"><button>From $110</button></div>
+</div>
+
+
+
+
+<div class="story">
+    <span></span>
+</div>
+
+
+<script>
+    var H = document.getElementById("Home");
+    var A = document.getElementById("Away");
+
+    var E = document.getElementById("Events");
+    var P = document.getElementById("Parking");
+    var Pl = document.getElementById("Playoff");
+
+    function Home(a){
+        H.style.color = "#1673e6";
+        A.style.color = "black";
+
+    }
+    function Away(a){
+        H.style.color = "black";
+        A.style.color = "#1673e6";
+    }
+    var game = document.getElementById("game");
+    var date = document.getElementById("date");
+    function OnhoverGames(a){
+        game.style.color="#1673e6";
+        date.style.color="#1673e6"
+    }
+    function OuthoverGames(a){
+        game.style.color="black";
+        date.style.color="black"
+    }
+    function Events(a){
+        E.style.background.color="#1673e6";
+        P.style.background.color="none";
+        Pl.style.background.color="none";
+        P.style.color="black";
+        Pl.style.color="black";
+    }
+    function Parking(a){
+        P.style.background.color="#1673e6";
+        E.style.background.color="none";
+        Pl.style.background.color="none";
+        E.style.color="black";
+        Pl.style.color="black";
+    }
+    function Playoff(a){
+        Pl.style.background.color="#1673e6";
+        E.style.background.color="none";
+        P.style.background.color="none";
+        E.style.color="black";
+        P.style.color="black";
+    }
+</script>
+</body>
+</html>
+
