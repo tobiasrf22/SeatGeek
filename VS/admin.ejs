@@ -341,7 +341,7 @@
 <body>
 
 <div class="sidenav">
-  <a href="http://localhost:8082/">Ligas</a>
+  <a href="http://localhost:8080/">Ligas</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
@@ -418,7 +418,7 @@
           <span style="display: block;">
             Abbreviation
           </span>
-          <input id="inp_AB type="text" name="Nombre">
+          <input id="inp_AB" type="text" name="Nombre">
         </div>
       </td>
     </tr>
@@ -458,12 +458,7 @@
         <span style="display: block;">
           Color Principal
         </span>
-        <select id="inp_ColorP">
-          <option style="background-color: #d11c08" value="volvo">Red</option>
-          <option style="background-color: #e64f3e"value="saab">LightRed</option>
-          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
-          <option style="background-color: #f58916"value="audi">Orange</option>
-        </select>
+        <input type='color' id="inp_ColorP"/>
       </div>
     </td>
   </tr>
@@ -473,12 +468,7 @@
         <span style="display: block;">
           Color Secundario
         </span>
-        <select id="inp_ColorS">
-          <option style="background-color: #d11c08" value="d11c08">Red</option>
-          <option style="background-color: #e64f3e"value="e64f3e">LightRed</option>
-          <option style="background-color: #821e12"value="821e12">DarkRed</option>
-          <option style="background-color: #f58916"value="f58916">Orange</option>
-        </select>
+        <input type='color' id="inp_ColorS"/>
       </div>
     </td>
   </tr>
@@ -508,96 +498,7 @@
 </div>
 </div>
 <div class="edit-Team" id="edit-Team">
-  <table>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Nombre
-        </span>
-        <input type="text" name="Nombre" value="Boston Celtics">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Historia
-        </span>
-        <input  type="text" name="Historia" value="No tiene">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Localidad
-        </span>
-        <input  type="text" name="Historia" value="Boston">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Escudo (Url)
-        </span>
-        <input  type="text" name="Escudo" value="Url">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Color Principal
-        </span>
-        <select>
-          <option style="background-color: #d11c08" value="volvo">Red</option>
-          <option style="background-color: #e64f3e"value="saab">LightRed</option>
-          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
-          <option style="background-color: #f58916"value="audi">Orange</option>
-        </select>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Color Secundario
-        </span>
-        <select>
-          <option style="background-color: #d11c08" value="volvo">Red</option>
-          <option style="background-color: #e64f3e"value="saab">LightRed</option>
-          <option style="background-color: #821e12"value="mercedes">DarkRed</option>
-          <option style="background-color: #f58916"value="audi">Orange</option>
-        </select>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Estadio
-        </span>
-        <input type="text" id="myInput" onkeyup="myFunction()" value="TD Garden" title="Type in a name"><ul id="myUL">
-  <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
-  <li><a href="#">Agnes</a></li>
-
-  <li><a href="#">Billy</a></li>
-  <li><a href="#">Bob</a></li>
-
-  <li><a href="#">Calvin</a></li>
-  <li><a href="#">Christina</a></li>
-  <li><a href="#">Cindy</a></li></ul>
-      </div>
-    </td>
-  </tr></table>
+  
 </div>
 <div class="new-Team" id="info-Team">
   <table>
@@ -625,7 +526,6 @@ const firebaseConfig = {
     firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 // User is signed in.
-                alert(user.email)
                 var displayName = user.displayName;
                 var email = user.email;
                 var emailVerified = user.emailVerified;
@@ -668,148 +568,175 @@ const firebaseConfig = {
 
 var LigaEnUso=""
 LeerEquipos=(Liga)=>{
+  var str = '<table> <tr>';
   LigaEnUso=Liga
   document.getElementById("main-Ligas").style.display = "none";
   
-  db.collection('Liga').doc(Liga).collection('Equipos').get().then(function(querySnapshot) {
+  db.collection('Liga').get().then(function(querySnapshot) {
     var c=0;
-var str = '<table> <tr>';
+    
 querySnapshot.forEach(function(doc) {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data().Nombre);
-    var my_name = doc.data().Nombre;
-    str += `<td>
-      <div  class="Team" id="Team" onclick="Team('${my_name}')">
-        <span style="background-color: #${doc.data().ColorP};" class="Team-abbreviation">
-            ${doc.data().AB}
-        </span>
-        <span  class="Team-name">
-            ${my_name}
-        </span>
-      </div>
-      </td>`
-      console.log(c)
-      c+=1
-    console.log(c)
-    if (c==3){
-    str +='</tr><tr>'
-      c=0;
-}    
-});
 
-str += '</tr> </table>  <div class="ABM"><button onclick="AgregarEquipo()" id="Agregar">Agregar</button><button id="Modificar">Modificar</button><button id="Eliminar" onclick="elim()">Eliminar</button></div> ';
+    if (doc.data().Nombre == Liga){
+      
+
+
+      doc.ref.collection("Equipos").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(eq) {
+          str += `<td>
+          <div  class="Team" id="Team" onclick="Team('${eq.data().Nombre}')">
+          <span style="background-color: ${eq.data().ColorP};" class="Team-abbreviation">
+          ${eq.data().AB}
+          </span>
+          <span  class="Team-name">
+          ${eq.data().Nombre}
+          </span>
+          </div>
+          </td>`
+          console.log(c)
+          c+=1
+          console.log(c)
+          if (c==3){
+          str +='</tr><tr>'
+            console.log("1"+str)
+          c=0;
+        }
+            // doc.data() is never undefined for query doc snapshots
+            console.log(eq.id, " => ", eq.data().Nombre);
+            var my_name = doc.data().Nombre;
+        });
+        str += '</tr> </table>  <div class="ABM"><button onclick="AgregarEquipo()" id="Agregar">Agregar</button></div> ';
 console.log(str)
 document.getElementById("main-Teams").innerHTML = str;
 document.getElementById("main-Teams").style.display = "block";
+document.getElementById("info-Team").style.display = "none";
+        console.log(doc.id, " => ", doc.data().Nombre);
+        var my_name = doc.data().Nombre;
+        });
+
+   
+} 
 });
+
+
+});
+
 }
 
-
 var EquipoEnUso=""
+
 LeerInfoEquipos=(Equipo)=>{
-  document.getElementById("main-Ligas").style.display = "none";
   EquipoEnUso=Equipo
-  db.collection('Liga').doc(LigaEnUso).collection('Equipos').where("Nombre", "==", Equipo).get().then(function(querySnapshot) {
-    var c=0;
-var str = '<table> <tr>';
-querySnapshot.forEach(function(doc) {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data().Nombre);
-    var my_name = doc.data().Nombre;
-    str += `<tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Nombre:
-        </span>
-        <span style="color: black">
-          ${my_name}
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Historia:
-        </span>
-        <span style="color: black">
-            ${doc.data().Historia}
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Localidad:
-        </span>
-        <span style="color: black">
-            ${doc.data().Localidad}
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Color Principal:
-        </span>
-        <span style="color: #${doc.data().ColorP}">
-            #${doc.data().ColorP}
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Color Secundario:
-        </span>
-        <span style="color: #${doc.data().ColorS}">
-            #${doc.data().ColorS}
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Estadio:
-        </span>
-        <span style="color: black">
-          TD Garden
-        </span>
-      </div>
-    </td>`
+    db.collection("Liga").get().then(function(querySnapshot) {
+    var str = '<table>';
+    querySnapshot.forEach(function(Liga) {
+        if (Liga.data().Nombre == LigaEnUso){
+          Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(Equi) {
+              if(Equi.data().Nombre == Equipo){
+                str += `<tr>
+                <td>
+                <div class="Container">
+                <span  style="display: block;">
+                Nombre:
+                </span>
+                <input id="info_Nombre" name="prodId" type="hidden" value="${Equi.data().Nombre}">
+                <span   style="color: black">
+                ${Equi.data().Nombre}
+                </span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Historia:
+                </span>
+                <span style="color: black">
+                ${Equi.data().Historia}
+                </span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Localidad:
+                </span>
+                <span style="color: black">
+                ${Equi.data().Localidad}
+                </span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Color Principal:
+                </span>
+                <span style="color: ${Equi.data().ColorP}">
+                ${Equi.data().ColorP}
+                </span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Color Secundario:
+                </span>
+                <span style="color: ${Equi.data().ColorS}">
+                ${Equi.data().ColorS}
+                </span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Estadio:
+                </span>
+                <span style="color: black">
+                TD Garden
+                </span>
+                </div>
+                </td>`
 
+
+              }
+
+            });
+            str += '</tr></table><div><button onclick="Volver()">Volver</button><button onclick="ModificarEquipoAction()" id="Modificar">Modificar</button><button id="Eliminar" onclick="BorrarEquipo()">Eliminar</button>  </div>';
+            console.log(str)
+            document.getElementById("info-Team").innerHTML = str;
+            document.getElementById("info-Team").style.display = "block";
+            document.getElementById("main-Teams").style.display = "none";
+            });
+            
+        }
+        
+        
+    });
     
-});
-
-str += '</tr></table><div><button onclick="Volver()">Volver</button>  </div>';
-console.log(str)
-document.getElementById("info-Team").innerHTML = str;
-document.getElementById("info-Team").style.display = "block";
-document.getElementById("main-Teams").style.display = "none";
 });
 }
 
 
 insertarEquipo=()=>{
     var inp_Nombre = document.getElementById("inp_Nombre").value;
-    var inp_Nombre = document.getElementById("inp_AB").value;
+    var inp_AB = document.getElementById("inp_AB").value;
     var inp_Historia = document.getElementById("inp_Historia").value;
     var inp_Localidad = document.getElementById("inp_Localidad").value;
     var inp_Escudo = document.getElementById("inp_Escudo").value;
     var inp_ColorP = document.getElementById("inp_ColorP").value;
     var inp_ColorS = document.getElementById("inp_ColorS").value;
     var inp_Estadio = document.getElementById("inp_Estadio").value;
-    alert(LigaEnUso)
+    
     db.collection("Liga").doc(LigaEnUso).collection('Equipos').add({
     Nombre: inp_Nombre,
     AB:inp_AB,
@@ -832,24 +759,220 @@ LeerEquipos(LigaEnUso)
 }
 
 
+EliminarEquipo=(Equipo)=>{
+  
+  db.collection("Liga").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(Liga) {
+      if (Liga.data().Nombre == LigaEnUso){
+        Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+          console.log("entré")
+          
+        querySnapshot.forEach(function(Equi) {
+          console.log(Equi.data().Nombre + "==" +Equipo)
+          if (Equi.data().Nombre == Equipo){
+            
+            Equi.ref.delete();
+            LeerEquipos(LigaEnUso)
+            document.getElementById("info-Team").style.display = "none";
+          }
+        });
+        
+        });
+
+      }
+        
+    });
+
+});
+  
+}
+
+ModificarEquipo=()=>{
+    db.collection("Liga").get().then(function(querySnapshot) {
+    var str = '<table>';
+    querySnapshot.forEach(function(Liga) {
+        if (Liga.data().Nombre == LigaEnUso){
+          Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(Equi) {
+              if(Equi.data().Nombre == EquipoEnUso){
+                str += `
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Nombre
+                </span>
+                <input type="text" id="mod_Nombre" name="Nombre" value="${Equi.data().Nombre}">
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Historia
+                </span>
+                <input  type="text" id="mod_Historia" name="Historia" value="${Equi.data().Historia}">
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Localidad
+                </span>
+                <input  type="text" id="mod_Localidad" name="Localidad" value="${Equi.data().Localidad}">
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Escudo (Url)
+                </span>
+                <input  type="text" id="mod_Escudo" name="Escudo" value="${Equi.data().Escudo}">
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Color Principal
+                </span>
+                <select id="mod_ColorP">
+                <option style="background-color: #${Equi.data().ColorP}" value="volvo">Red</option>
+                <option style="background-color: #e64f3e"value="saab">LightRed</option>
+                <option style="background-color: #821e12"value="mercedes">DarkRed</option>
+                <option style="background-color: #f58916"value="audi">Orange</option>
+                </select>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Color Secundario
+                </span>
+                <select id="mod_ColorS">
+                <option style="background-color: #${Equi.data().ColorS}" value="volvo">Red</option>
+                <option style="background-color: #e64f3e"value="saab">LightRed</option>
+                <option style="background-color: #821e12"value="mercedes">DarkRed</option>
+                <option style="background-color: #f58916"value="audi">Orange</option>
+                </select>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
+                Estadio
+                </span>
+                <input type="text" id="mod_Estadio" onkeyup="myFunction()" value="${Equi.data().Estadio}" title="Type in a name"><ul id="myUL">
+                <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
+                <li><a href="#">Agnes</a></li>
+
+                <li><a href="#">Billy</a></li>
+                <li><a href="#">Bob</a></li>
+
+                <li><a href="#">Calvin</a></li>
+                <li><a href="#">Christina</a></li>
+                <li><a href="#">Cindy</a></li></ul>
+                </div>
+                </td>
+                </tr>`
+
+
+              }
+
+            });
+            str += '</tr></table><div><button onclick="ModificarModificarEquipo()">Modificar</button></div>';
+            console.log(str)
+            document.getElementById("edit-Team").innerHTML = str;
+            document.getElementById("edit-Team").style.display = "block";
+            document.getElementById("info-Team").style.display = "none";
+            });
+            
+        }
+        
+        
+    });
+    
+});
+}
+
+ModificarModificarEquipo=()=>{
+  console.log(document.getElementById("mod_Nombre").value)
+  console.log(document.getElementById("mod_Historia").value)
+  console.log(document.getElementById("mod_Localidad").value)
+  console.log(document.getElementById("mod_Escudo").value)
+  console.log(document.getElementById("mod_ColorP").value)
+  console.log(document.getElementById("mod_ColorS").value)
+  console.log(document.getElementById("mod_Estadio").value)
+  db.collection("Liga").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(Liga) {
+        if (Liga.data().Nombre == LigaEnUso){
+          Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(Equi) {
+              if(Equi.data().Nombre == EquipoEnUso){
+                Equi.ref.update({
+                  Nombre: document.getElementById("mod_Nombre").value,
+                  Historia: document.getElementById("mod_Historia").value,
+                  Localidad: document.getElementById("mod_Localidad").value,
+                  Escudo: document.getElementById("mod_Escudo").value,
+                  ColoP: document.getElementById("mod_ColorP").value,
+                  ColorS: document.getElementById("mod_ColorS").value,
+                  Estadio: document.getElementById("mod_Estadio").value
+                });
+                
+              }
+
+            });
+            LeerInfoEquipos(document.getElementById("mod_Nombre").value)
+            document.getElementById("edit-Team").style.display = "none";
+            });
+            
+        }
+        
+        
+    });
+    
+});
+}
+function ModificarEquipoAction(){
+ModificarEquipo(document.getElementById("info_Nombre").value)
+}
+
+function BorrarEquipo(){
+  EliminarEquipo(document.getElementById("info_Nombre").value)
+}
+
 function AgregarLiga(){
   document.getElementById("main-Ligas").style.display = "none";
   document.getElementById("new-Liga").style.display = "block";
 }
+
   document.getElementById("Agregar").addEventListener ("click", Agregar, true);
   document.getElementById("Modificar").addEventListener ("click", Modificar, true);
   var x = document.getElementsByClassName("Liga");
   for (var i = 0; i < x.length; i++) {
     x[i].addEventListener ("click", Liga, true);
 }
+
 function AgregarEquipo(){
   document.getElementById("main-Teams").style.display = "none";
   document.getElementById("new-Team").style.display = "block";
 }
+
 function Modificar(){
   document.getElementById("main-Teams").style.display = "none";
   document.getElementById("edit-Team").style.display = "block";
 }
+
 function Liga(a){
   LeerEquipos(a)
   document.getElementById("main-Teams").style.display = "block";
@@ -884,19 +1007,23 @@ function myFunction() {
         }
     }
 }
+
 function select_stadium(x){
   x.style.backgroundColor  ="#1673e6";
   x.style.color  ="white";
 }
+
 function Team(a){
   LeerInfoEquipos(a)
   
 }
+
 function Volver(){
   document.getElementById("main-Teams").style.display = "block";
   document.getElementById("info-Team").style.display = "none";
 
 }
+
 function Estadios(){
 
 }

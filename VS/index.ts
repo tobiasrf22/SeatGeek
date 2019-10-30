@@ -27,6 +27,7 @@ app.get( "/home", ( req, res) => {
 
 } );
 
+
 const server = http.listen(8080, function() {
     console.log(`Servidor iniciado: http://localhost:${ port }`);
   });
