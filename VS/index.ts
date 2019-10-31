@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 const app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8082;
 import * as socketio from "socket.io";
 const fileUpload = require('express-fileupload')
 const morgan = require('morgan')
@@ -28,6 +28,6 @@ app.get( "/home", ( req, res) => {
 } );
 
 
-const server = http.listen(8080, function() {
+const server = http.listen(8082, function() {
     console.log(`Servidor iniciado: http://localhost:${ port }`);
   });

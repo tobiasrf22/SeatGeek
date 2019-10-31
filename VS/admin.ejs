@@ -354,6 +354,8 @@
 
 <div class="main-Ligas" id="main-Ligas-mod">
 </div>
+<div class="main-Ligas" id="main-Ligas-elim">
+</div>
 <div class="main-Teams" id="main-Teams">
   
 </div>
@@ -551,6 +553,7 @@ const firebaseConfig = {
 
     var str = '<table style="width:30%;">';
     var str2 = '<table style="width:30%;">';
+    var str3 = '<table style="width:30%;">';
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data().Nombre);
@@ -575,14 +578,27 @@ const firebaseConfig = {
         </td>
 
         </tr>`
+        str3 += `<tr>
+        <td>
+        <div class="Liga" id="Liga" onclick="Eliminar__Liga('${my_name}')">
+        <span>
+        ${my_name}
+        </span>
+        </div>
+        </td>
+
+        </tr>`
         
     });
-    str += '</table><div class="ABM"><button onclick="AgregarLiga()">Agregar</button><button   onclick="Modificar_Liga()">Modificar</button><button >Eliminar</button></div>';
+    str += '</table><div class="ABM"><button onclick="AgregarLiga()">Agregar</button><button   onclick="Modificar_Liga()">Modificar</button><button onclick="Eliminar_Liga()" >Eliminar</button></div>';
     str2 += '</table><div class="ABM"><button style="background-color:red;" onclick="Salir_Modificar()">Modificar</button></div>';
+    str3 += '</table><div class="ABM"><button style="background-color:red;" onclick="Salir_Eliminar()">Eliminar</button></div>';
     console.log(str)
     document.getElementById("main-Ligas").innerHTML = str;
     document.getElementById("main-Ligas-mod").style.display ="none"
     document.getElementById("main-Ligas-mod").innerHTML = str2;
+    document.getElementById("main-Ligas-elim").style.display ="none"
+    document.getElementById("main-Ligas-elim").innerHTML = str3;
 });
 
 var LigaEnUso=""
@@ -941,6 +957,22 @@ EliminarEquipo=(Equipo)=>{
   
 }
 
+EliminarLiga=(L)=>{
+
+  db.collection("Liga").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(Liga) {
+      console.log(L)
+      if (Liga.data().Nombre == L){
+        Liga.ref.delete();
+        
+      }
+      
+    });
+
+    });
+
+}
+
 ModificarEquipo=()=>{
     db.collection("Liga").get().then(function(querySnapshot) {
     var str = '<table>';
@@ -1128,11 +1160,24 @@ function Salir_Modificar (){
 function Modificar__Liga(Liga){
   ModificarLiga(Liga)
 }
+function Eliminar__Liga(Liga){
+  EliminarLiga(Liga)
+}
+function Eliminar_Liga(){
+  document.getElementById("main-Ligas").style.display = "none";
+  document.getElementById("main-Ligas-elim").style.display = "block";
+}
+
+function Salir_Eliminar(){
+  document.getElementById("main-Ligas-elim").style.display = "none";
+  document.getElementById("main-Ligas").style.display = "block";
+}
 
 function Modificar_Liga(){
   document.getElementById("main-Ligas").style.display = "none";
   document.getElementById("main-Ligas-mod").style.display = "block";
 }
+
 function mod_Liga(){
   document.getElementById("main-Ligas").style.display = "none";
   document.getElementById("new-Liga").style.display = "block";
@@ -1194,7 +1239,7 @@ function Team(a){
 }
 
 function Volver(){
-  document.getElementById("main-Teams").style.display = "block";
+  LeerEquipos(LigaEnUso)
   document.getElementById("info-Team").style.display = "none";
 
 }
