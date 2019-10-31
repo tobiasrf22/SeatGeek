@@ -351,6 +351,9 @@
 
 <div class="main-Ligas" id="main-Ligas">
 </div>
+
+<div class="main-Ligas" id="main-Ligas-mod">
+</div>
 <div class="main-Teams" id="main-Teams">
   
 </div>
@@ -361,7 +364,7 @@
           <span style="display: block;">
             Nombre
           </span>
-          <input type="text" name="Nombre">
+          <input type="text" id="inp_Liga_Nombre" name="Nombre">
         </div>
       </td>
     </tr>
@@ -371,7 +374,7 @@
           <span style="display: block;">
             Historia
           </span>
-          <input  type="text" name="Historia">
+          <input  type="text" id="inp_Liga_Historia" name="Historia">
         </div>
       </td>
     </tr>
@@ -381,7 +384,7 @@
           <span style="display: block;">
             Pais
           </span>
-          <input  type="text" name="Historia">
+          <input  type="text" id="inp_Liga_Pais" name="Historia">
         </div>
       </td>
     </tr>
@@ -391,16 +394,18 @@
           <span style="display: block;">
             Escudo (Url)
           </span>
-          <input  type="text" name="Escudo">
+          <input  type="text" id="inp_Liga_Escudo" name="Escudo">
         </div>
       </td>
     
     </tr>
   
-  </table><div><button onclick="algo()">
+  </table><div><button onclick="insertarLiga()">
     Agregar</button>
   </div>
 </div>
+
+<div class="new-Team" id="edit-Liga"></div>
 <div class="new-Team" id="new-Team"><table>
   <tr>
     <td>
@@ -545,25 +550,39 @@ const firebaseConfig = {
 
 
     var str = '<table style="width:30%;">';
+    var str2 = '<table style="width:30%;">';
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data().Nombre);
         var my_name = doc.data().Nombre;
         str += `<tr>
-  <td>
-    <div class="Liga" id="Liga" onclick="Liga('${my_name}')">
-      <span>
+        <td>
+        <div class="Liga" id="Liga" onclick="Liga('${my_name}')">
+        <span>
         ${my_name}
-      </span>
-    </div>
-  </td>
-  
-</tr>`
+        </span>
+        </div>
+        </td>
+
+        </tr>`
+        str2 += `<tr>
+        <td>
+        <div class="Liga" id="Liga" onclick="Modificar__Liga('${my_name}')">
+        <span>
+        ${my_name}
+        </span>
+        </div>
+        </td>
+
+        </tr>`
         
     });
-    str += '</table><div class="ABM"><button>Agregar</button><button>Modificar</button><button >Eliminar</button></div>';
+    str += '</table><div class="ABM"><button onclick="AgregarLiga()">Agregar</button><button   onclick="Modificar_Liga()">Modificar</button><button >Eliminar</button></div>';
+    str2 += '</table><div class="ABM"><button style="background-color:red;" onclick="Salir_Modificar()">Modificar</button></div>';
     console.log(str)
     document.getElementById("main-Ligas").innerHTML = str;
+    document.getElementById("main-Ligas-mod").style.display ="none"
+    document.getElementById("main-Ligas-mod").innerHTML = str2;
 });
 
 var LigaEnUso=""
@@ -650,6 +669,19 @@ LeerInfoEquipos=(Equipo)=>{
                 <tr>
                 <td>
                 <div class="Container">
+                <span  style="display: block;">
+                Abbreviation:
+                </span>
+                <input id="info_AB" name="prodId" type="hidden" value="${Equi.data().AB}">
+                <span   style="color: black">
+                ${Equi.data().AB}
+                </span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
                 <span style="display: block;">
                 Historia:
                 </span>
@@ -727,6 +759,31 @@ LeerInfoEquipos=(Equipo)=>{
 }
 
 
+  insertarLiga=()=>{
+    var inp_Nombre = document.getElementById("inp_Liga_Nombre").value;
+    var inp_Pais = document.getElementById("inp_Liga_Pais").value;
+    var inp_Historia = document.getElementById("inp_Liga_Historia").value;
+    var inp_Escudo = document.getElementById("inp_Liga_Escudo").value;
+
+  db.collection("Liga").add({
+    Nombre: inp_Nombre,
+    Historia :inp_Historia,
+    Pais:inp_Pais,
+    Escudo:inp_Escudo
+
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+    location.reload(true);
+    
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+  
+
+}
+
 insertarEquipo=()=>{
     var inp_Nombre = document.getElementById("inp_Nombre").value;
     var inp_AB = document.getElementById("inp_AB").value;
@@ -737,27 +794,124 @@ insertarEquipo=()=>{
     var inp_ColorS = document.getElementById("inp_ColorS").value;
     var inp_Estadio = document.getElementById("inp_Estadio").value;
     
-    db.collection("Liga").doc(LigaEnUso).collection('Equipos').add({
-    Nombre: inp_Nombre,
-    AB:inp_AB,
-    Historia :inp_Historia,
-    Localidad:inp_Localidad,
-    Escudo:inp_Escudo,
-    ColorP:inp_ColorP,
-    ColorS :inp_ColorS,
-    Estadio:inp_Estadio
 
-})
-.then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
+    db.collection("Liga").get().then(function(querySnapshot) {
+    var str = '<table>';
+    querySnapshot.forEach(function(Liga) {
+        if (Liga.data().Nombre == LigaEnUso){
+          Liga.ref.collection('Equipos').add({
+          Nombre: inp_Nombre,
+          AB:inp_AB,
+          Historia :inp_Historia,
+          Localidad:inp_Localidad,
+          Escudo:inp_Escudo,
+          ColorP:inp_ColorP,
+          ColorS :inp_ColorS,
+          Estadio:inp_Estadio
+
+          })
+          .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          document.getElementById("new-Team").style.display = "none";
+          LeerEquipos(LigaEnUso)
+          })
+          .catch(function(error) {
+          console.error("Error adding document: ", error);
+          });
+        }
+        
+        
+    });
+    
 });
-document.getElementById("new-Team").style.display = "none";
-LeerEquipos(LigaEnUso)
+
 }
 
+ModificarModificarLiga=()=>{
+  db.collection("Liga").get().then(function(querySnapshot) {
+    
+    querySnapshot.forEach(function(doc) {
+      if (doc.data().Nombre == LigaEnUso ){
+        doc.ref.update({
+                  Nombre: document.getElementById("mod_Liga_Nombre").value,
+                  Historia: document.getElementById("mod_Liga_Historia").value,
+                  Pais: document.getElementById("mod_Liga_Pais").value,
+                  Escudo: document.getElementById("mod_Liga_Escudo").value
+                  
+          });
+          
+        
+      }
+      
+  });
+
+  });
+}
+
+
+ModificarLiga=(Liga)=>{
+  LigaEnUso = Liga
+  var str ="<table>"
+  db.collection("Liga").get().then(function(querySnapshot) {
+    
+  querySnapshot.forEach(function(doc) {
+    if (doc.data().Nombre == Liga ){
+      str += `<tr>
+      <td>
+      <div class="Container">
+      <span style="display: block;">
+      Nombre
+      </span>
+      <input type="text" value="${doc.data().Nombre}" id="mod_Liga_Nombre" name="Nombre">
+      </div>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <div class="Container">
+      <span style="display: block;">
+      Historia
+      </span>
+      <input  type="text"value="${doc.data().Historia}" id="mod_Liga_Historia" name="Historia">
+      </div>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <div class="Container">
+      <span style="display: block;">
+      Pais
+      </span>
+      <input  type="text"value="${doc.data().Pais}" id="mod_Liga_Pais" name="Pais">
+      </div>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <div class="Container">
+      <span style="display: block;">
+      Escudo (Url)
+      </span>
+      <input  type="text"value="${doc.data().Escudo}" id="mod_Liga_Escudo" name="Escudo">
+      </div>
+      </td>
+
+      </tr>
+
+      `
+      
+    }
+    
+});
+str += '</table><div><button onclick="ModificarModificarLiga()">Modificar</button></div>';
+      console.log(str)
+      document.getElementById("edit-Liga").innerHTML = str;
+      document.getElementById("edit-Liga").style.display = "block";
+      document.getElementById("main-Ligas-mod").style.display = "none";
+});
+
+
+}
 
 EliminarEquipo=(Equipo)=>{
   
@@ -810,6 +964,16 @@ ModificarEquipo=()=>{
                 <td>
                 <div class="Container">
                 <span style="display: block;">
+                Abbreviation
+                </span>
+                <input type="text" id="mod_AB" name="Nombre" value="${Equi.data().AB}">
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">
                 Historia
                 </span>
                 <input  type="text" id="mod_Historia" name="Historia" value="${Equi.data().Historia}">
@@ -842,12 +1006,7 @@ ModificarEquipo=()=>{
                 <span style="display: block;">
                 Color Principal
                 </span>
-                <select id="mod_ColorP">
-                <option style="background-color: #${Equi.data().ColorP}" value="volvo">Red</option>
-                <option style="background-color: #e64f3e"value="saab">LightRed</option>
-                <option style="background-color: #821e12"value="mercedes">DarkRed</option>
-                <option style="background-color: #f58916"value="audi">Orange</option>
-                </select>
+                <input type='color' value="${Equi.data().ColorP}" id="mod_ColorP"/>
                 </div>
                 </td>
                 </tr>
@@ -857,12 +1016,7 @@ ModificarEquipo=()=>{
                 <span style="display: block;">
                 Color Secundario
                 </span>
-                <select id="mod_ColorS">
-                <option style="background-color: #${Equi.data().ColorS}" value="volvo">Red</option>
-                <option style="background-color: #e64f3e"value="saab">LightRed</option>
-                <option style="background-color: #821e12"value="mercedes">DarkRed</option>
-                <option style="background-color: #f58916"value="audi">Orange</option>
-                </select>
+                <input type='color' value="${Equi.data().ColorS}" id="mod_ColorS"/>
                 </div>
                 </td>
                 </tr>
@@ -921,19 +1075,21 @@ ModificarModificarEquipo=()=>{
               if(Equi.data().Nombre == EquipoEnUso){
                 Equi.ref.update({
                   Nombre: document.getElementById("mod_Nombre").value,
+                  AB: document.getElementById("mod_AB").value,
                   Historia: document.getElementById("mod_Historia").value,
                   Localidad: document.getElementById("mod_Localidad").value,
                   Escudo: document.getElementById("mod_Escudo").value,
-                  ColoP: document.getElementById("mod_ColorP").value,
+                  ColorP: document.getElementById("mod_ColorP").value,
                   ColorS: document.getElementById("mod_ColorS").value,
                   Estadio: document.getElementById("mod_Estadio").value
                 });
                 
               }
-
-            });
-            LeerInfoEquipos(document.getElementById("mod_Nombre").value)
             document.getElementById("edit-Team").style.display = "none";
+            LeerInfoEquipos(document.getElementById("mod_Nombre").value)
+            });
+            
+            
             });
             
         }
@@ -943,6 +1099,7 @@ ModificarModificarEquipo=()=>{
     
 });
 }
+
 function ModificarEquipoAction(){
 ModificarEquipo(document.getElementById("info_Nombre").value)
 }
@@ -961,6 +1118,24 @@ function AgregarLiga(){
   var x = document.getElementsByClassName("Liga");
   for (var i = 0; i < x.length; i++) {
     x[i].addEventListener ("click", Liga, true);
+}
+
+
+function Salir_Modificar (){
+  document.getElementById("main-Ligas").style.display = "block";
+  document.getElementById("main-Ligas-mod").style.display = "none";
+}
+function Modificar__Liga(Liga){
+  ModificarLiga(Liga)
+}
+
+function Modificar_Liga(){
+  document.getElementById("main-Ligas").style.display = "none";
+  document.getElementById("main-Ligas-mod").style.display = "block";
+}
+function mod_Liga(){
+  document.getElementById("main-Ligas").style.display = "none";
+  document.getElementById("new-Liga").style.display = "block";
 }
 
 function AgregarEquipo(){
