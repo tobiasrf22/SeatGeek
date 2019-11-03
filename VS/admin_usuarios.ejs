@@ -350,53 +350,7 @@
 
 
 <div class="main-Ligas" id="main-Users">
-  <span style="padding: 10px;color: grey">
-    Usuarios Administradores
-  </span>
-  <table>
-    <td>
-      <div class="Liga" id="Liga" onclick="Liga()">
-        <span>
-          Tobiasrf22@gmail.com
-        </span>
-      </div>
-    </td>
-    <td>
-      <div class="Liga" id="Liga" onclick="Liga()">
-        <span>
-          Tobiasrf22@gmail.com
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Liga" id="Liga" onclick="Liga()">
-        <span>
-          Tobiasrf22@gmail.com
-        </span>
-      </div>
-    </td>
-    <td>
-      <div class="Liga" id="Liga" onclick="Liga()">
-        <span>
-          Tobiasrf22@gmail.com
-        </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="Liga" id="Liga" onclick="Liga()">
-        <span>
-          Tobiasrf22@gmail.com
-        </span>
-      </div>
-    </td>
-    
-  </tr></table><div class="ABM">
-  <button onclick="Agregar()">Agregar</button>
-  <button >Eliminar</button></div>
+  
 </div>
   
 </div>
@@ -411,27 +365,135 @@
     </tr>
     <tr>
     <td>
-      <div class="Container">
-
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><ul id="myUL" style="display: block;">
-  <li><a href="#" onclick="select_stadium(this)">Adele@gmail.com</a></li>
-  <li><a href="#">Tobiasrf22@gmail.com</a></li>
-
-  <li><a href="#">Pepe@gmail.com</a></li>
-  <li><a href="#">Reina@gmail.com</a></li>
-
-  <li><a href="#">Aaaj@gmail.com</a></li>
-  <li><a href="#">Jaaa@gmail.com</a></li>
-  <li><a href="#">Boke@gmail.com</a></li></ul>
-      </div>
+        <input type="text" id="myInput"  placeholder="Mail del usuario" title="Type in a name">
     </td>
   </tr>
   </table>
+  <button onclick="AgregarUsuario()">Agregar</button>
 </div>
-
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
 
 
 <script type="text/javascript">
+
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAxZ4pVevrj9SRxp3EWlfYieKvA7V6ch68",
+    authDomain: "superliga-179605.firebaseapp.com",
+    databaseURL: "https://superliga-179605.firebaseio.com",
+    projectId: "superliga-179605",
+    storageBucket: "",
+    messagingSenderId: "952837515941",
+    appId: "1:952837515941:web:13eabd2f5950d32a"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                var displayName = user.displayName;
+                var email = user.email;
+                var emailVerified = user.emailVerified;
+                var photoURL = user.photoURL;
+                var isAnonymous = user.isAnonymous;
+                var uid = user.uid;
+                var providerData = user.providerData;
+                    
+                }
+                else {
+                    
+            }
+            });
+
+            var str =`<span style="padding: 10px;color: grey">
+    Usuarios Administradores
+    </span>
+    <table>`
+
+
+db.collection("Admin").get().then(function(querySnapshot) {
+  
+  
+querySnapshot.forEach(function(admin) {
+    str+=`
+    <tr>
+    <td>
+    <div class="Liga" id="Liga" onclick="ElimUser('${admin.data().Mail}')">
+    <span>
+    ${admin.data().Mail}
+    </span>
+    </div>
+    </td>
+    </tr>
+    `
+
+    
+})
+
+})
+.then(function(docRef) {
+  str+=`</table><div class="ABM">
+    <button onclick="Agregar()">Agregar</button>
+    <button onclick="Eliminar(this)">Eliminar</button></div>`
+    document.getElementById("main-Users").innerHTML = str;
+            
+        })
+.catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+         
+
+
+
+AgregarUsuario=()=>{
+  db.collection("Admin").add({
+          Mail: document.getElementById("myInput").value
+
+          })
+          .then(function(docRef) {
+          
+          location.reload(true);
+
+          })
+          .catch(function(error) {
+          console.error("Error adding document: ", error);
+          });
+
+        }
+
+ElimUser=(a)=>{
+  if (elim){
+    db.collection("Admin").get().then(function(querySnapshot) {
+    
+    querySnapshot.forEach(function(doc) {
+      if (doc.data().Mail == a ){
+        doc.ref.delete()
+          
+          .then(function(docRef) {
+            location.reload(true);
+              
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+          
+        
+      }
+      
+  });
+
+  });
+  }
+}
+
+
+//----------------------------------------------------------------------------------
   document.getElementById("Agregar").addEventListener ("click", Agregar, true);
   document.getElementById("Modificar").addEventListener ("click", Modificar, true);
   var x = document.getElementsByClassName("Liga");
@@ -442,6 +504,13 @@
 function Agregar(){
     document.getElementById("main-Users").style.display = "none";
   document.getElementById("agre-Users").style.display = "block";
+}
+
+
+var elim=false
+function Eliminar(b){
+  b.style.backgroundColor="red"
+  elim=true;
 }
 
 

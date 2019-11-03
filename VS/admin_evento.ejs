@@ -2,6 +2,46 @@
 <html>
 <head>
     <style>
+      .buttonAgregar{
+        margin-top: 100px;
+      }
+#myInput {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
         body {
         font-family: "Lato", sans-serif;
         overflow-x: hidden;
@@ -351,113 +391,803 @@
 
 
 <div class="new-Stadium" id="Eventos" style="display: block;">
-  <table>
-    <tr>
-      <td>
-        <div class="Container">
-          <span style="display: block;">Tipo de Evento</span>
-          <select>
-            <option>NBA</option>
-            <option>MLB</option>
-            <option>Artistas</option>
-          </select>
-          <select>
-            <option>Boston</option>
-            <option>Hawks</option>
-            <option>Nets</option>
-          </select>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td style="padding: 0px;">
-        <div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)" onclick="Partido()"> 
-            <div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
-            <div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Td Garden-Boston</p> </div>   
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td style="padding: 0px;">
-        <div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
-            <div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
-            <div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Td Garden-Boston</p> </div>   
-        </div>
-      </td>
-    </tr>
-  </table>
-  <div class="ABM">
-  <button id="Agregar">Agregar</button>
-  <button id="Modificar">Modificar</button>
-  <button id="Eliminar" onclick="elim()">Eliminar</button>
-</div></div>
+  </div>
+
 <div class="new-Stadium" id="new-Partido" style="display: none;">
+  </div>
+<div class="new-Stadium" id="info-Partido" >
+  
+
+</div>
+
+<div class="new-Stadium" id="new-Ticket">
   <table>
+    <div id="Partido">
+    <tr>
+    <td>
+    <span style="display: block;">Nombre</span>
+    <input type="text" name=""id="inp__Ticket_Nombre" >
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <span style="display: block;">Cantidad</span>
+    <input type="numbre" name="" id="inp__Ticket_Cantidad">
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <span style="display: block;">Precio</span>
+    <input type="" name=""id="inp__Ticket_Precio" >
+    </td>
+    </tr>
+    </table><div class="ABM"><button onclick="AgregarTicket()">Agregar</button></div>
+</div>
+<div class="new-Stadium" id="info-Ticket" >
+</div>
+<div class="new-Stadium" id="mod-Ticket" >
+</div>
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+<script type="text/javascript">
+
+
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAxZ4pVevrj9SRxp3EWlfYieKvA7V6ch68",
+    authDomain: "superliga-179605.firebaseapp.com",
+    databaseURL: "https://superliga-179605.firebaseio.com",
+    projectId: "superliga-179605",
+    storageBucket: "",
+    messagingSenderId: "952837515941",
+    appId: "1:952837515941:web:13eabd2f5950d32a"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                var displayName = user.displayName;
+                var email = user.email;
+                var emailVerified = user.emailVerified;
+                var photoURL = user.photoURL;
+                var isAnonymous = user.isAnonymous;
+                var uid = user.uid;
+                var providerData = user.providerData;
+                    
+                }
+                else {
+                    
+            }
+            });
+
+
+
+
+            function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+
+            /*
+
+
+
+
+var strL=`<table>
+  <tr>
+          <td>
+          <div class="Container">
+          <span style="display: block;">Tipo de Evento</span>
+          <select>`;
+  
+
+
+var str=`<select>`;
+  var c=0;
+    db.collection("Liga").get().then(function(querySnapshot) {
+  
+
+  querySnapshot.forEach(function(Lig) {
+    console.log(c)
+      console.log(Lig.id, " => ", Lig.data().Nombre);
+      var my_name = Lig.data().Nombre;
+          strL += `
+          <option>${Lig.data().Nombre}</option>`
+
+          Lig.ref.collection("Equipos").get().then(function(querySnapshot) {
+            
+
+              
+          querySnapshot.forEach(function(eq) {
+            if (c==0){
+          console.log(eq.id, " => ", eq.data().Nombre);
+          console.log(`<option>${eq.data().Nombre}</option>`)
+          str += `<option>${eq.data().Nombre}</option>`
+          c++
+            }
+          })
+            
+
+            
+
+          }).then(function(docRef) {
+    
+    strL += '</select>';
+    str+=`
+    </select>
+    </div>
+    </td>
+    </tr>`;
+    console.log(str)
+    strL+=str
+    document.getElementById("Eventos").innerHTML = strL;
+              
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+
+  
+      
+  })
+  
+  })
+  
+*/
+
+//-----
+var strEq ="";
+
+  db.collection("Liga").orderBy("Nombre", "asc").get().then(function(querySnapshot) {
+      str=`<table>
+      <tr>
+      <td>
+      <div class="Container">
+      <span style="display: block;">Tipo de Evento</span>
+      <select autofocus="autofocus" onfocus="SelectEquipos(this)" onchange="SelectEquipos(this)">`; 
+        var c= 0;
+      strE =`<select>`;
+  var c= 0;
+querySnapshot.forEach(function(Lig) {
+
+    console.log(Lig.id, " => ", Lig.data().Nombre);
+    str += `<option value="${Lig.id}">${Lig.data().Nombre}</option>`
+
+
+    
+})//end forEach
+
+}).then(function(docRef) {
+    str += '</select><div id="select_equipos"></div>';
+    document.getElementById("Eventos").innerHTML = str;
+    //---   
+    })//end then
+    .catch(function(error) {
+      console.error("Error reading the document: ", error);
+    });//end catch
+
+
+
+
+SelectEquipos=(a)=>{
+  console.log(a.value)
+  db.collection("Liga").orderBy("Nombre", "asc").get().then(function(querySnapshot) {
+    var str = '<select id="s_Equipo" autofocus="autofocus" onfocus="Eventos(this)" onchange="Eventos(this)">';
+    querySnapshot.forEach(function(Liga) {
+        if (Liga.id == a.value){
+          Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(Equi) {
+              str+=`<option value="${Equi.id}">${Equi.data().Nombre}</option>`
+
+            });
+            str += `</select></tr><div id="eventoss"></div></table>
+            <div class="ABM">
+            <button id="Agregar"onclick="Agregar()">Agregar</button>
+            </div>`;
+            console.log(str)
+            document.getElementById("select_equipos").innerHTML = str
+
+            });
+            
+        }
+        
+        
+    });
+    
+});
+}
+
+Eventos=(a)=>{
+  var str = '';
+  db.collection("Evento").orderBy("Fecha", "asc").get().then(function(querySnapshot) {
+    
+    querySnapshot.forEach(function(Evento) {
+        if (Evento.data().Local == a.value){
+
+          db.collection("Liga").get().then(function(querySnapshot) {
+
+          querySnapshot.forEach(function(Liga) {
+            Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+
+            querySnapshot.forEach(function(Equipo) {
+              if (Equipo.id == a.value){
+                str+=`<tr>
+                <td style="padding: 0px;">
+                <div class="Games"   onclick="InfoEvento('${Evento.id}')"> 
+                <div  class="left"><p><b id="date">${Evento.data().Fecha}</b></p><p>${Evento.data().Hora}</p></div> 
+                <div class="right"><p><b id="game">  ${Equipo.data().Nombre} vs ${Evento.data().Visitante}</b></p><p style="color: grey;">${Evento.data().Estadio}</p> </div>   
+                </div>
+                </td>
+                </tr>`
+              }
+            });
+            }).then(function(docRef) {
+            console.log(str)
+            document.getElementById("eventoss").innerHTML = str
+    //---   
+    })//end then
+    .catch(function(error) {
+      console.error("Error reading the document: ", error);
+    });//end catch
+          });
+          })
+          
+            
+        }
+        
+        
+    });
+            
+    
+})
+
+
+}
+
+var EventoEnUso;
+
+InfoEvento=(a)=>{
+
+  
+
+    
+  
+
+
+  var str1 = '<table>';
+  db.collection("Evento").orderBy("FH", "asc").get().then(function(querySnapshot) {
+    var c=0;
+    querySnapshot.forEach(function(Evento) {
+        if (Evento.id == a){
+          EventoEnUso = Evento;
+            db.collection("Liga").get().then(function(querySnapshot) {
+
+            querySnapshot.forEach(function(Liga) {
+            Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+
+            querySnapshot.forEach(function(Equipo) {
+              if (Equipo.id == Evento.data().Local){
+              if (c==0){
+              str1 += `<tr>
+              <td>
+              <div class="Container">
+              <span style="display: block;">Participantes</span>
+              <span style="color: black">${Equipo.data().Nombre} vs ${Evento.data().Visitante}</span>
+              </div>
+              </td>
+              </tr>
+              <tr>
+              <td>
+              <div class="Container">
+              <span style="display: block;">Fecha y Hora</span>
+              <span style="color: black">${Evento.data().Fecha} <b>·</b> ${Evento.data().Hora}hs</span>
+              </div>
+              </td>
+              </tr>
+              <tr>
+              <td>
+              <div class="Container">
+              <span style="display: block;">Tickets</span>
+              </div>
+              </td>
+              </tr>`
+              c++;
+              }
+              ;
+
+
+              Evento.ref.collection("Tickets").orderBy("Precio", "asc").get().then(function(querySnapshot) {
+
+              querySnapshot.forEach(function(Ticket) {
+
+              str1+=`<tr>
+              <td>
+              <div class="Ticket" onclick="TicketInfo('${Ticket.id}')" id="${Ticket.id}">
+              <div>
+              <span style="color: green;font-weight: bolder;">$${Ticket.data().Precio}</span>
+              <span>${Ticket.data().Nombre}</span>
+              <span style="display: block;">Disponibles: ${Ticket.data().Disponibilidad}</span>
+              </div>
+              </td>
+
+              </tr>`
+
+
+
+
+              });
+
+
+              }).then(function(docRef) {
+              str1+='</table><button onclick="FormAT()">Agregar</button><button onclick="EliminarEvento()">Modificar</button><button onclick="EliminarTicket()">Eliminar</button>'
+              document.getElementById("Eventos").style.display = "none";
+              document.getElementById("info-Partido").innerHTML = str1;
+              document.getElementById("info-Partido").style.display = "block";
+              OB()
+
+              //---   
+              })//end then
+              .catch(function(error) {
+              console.error("Error reading the document: ", error);
+              });//end catch
+            }
+            });
+            })
+            });
+            })
+
+          }
+
+
+      });
+            
+    
+}).then(function(docRef) {
+  console.log(str)
+  
+    //---   
+    })//end then
+    .catch(function(error) {
+      console.error("Error reading the document: ", error);
+    });//end catch
+
+}
+
+
+
+OB=(a)=>{
+
+  EventoEnUso.ref.collection("Tickets").get().then(function(querySnapshot) {
+  var str = '<table>';
+  querySnapshot.forEach(function(Ticket) {
+    EventoEnUso.ref.collection("Tickets").where("Nombre", "==", Ticket.data().Nombre).onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+                console.log("New city: ", change.doc.data());
+            }
+            if (change.type === "modified") {
+              if(document.getElementById("info-Partido").style.display == "block"){
+                var u = `<span style="color: green;font-weight: bolder;">$${change.doc.data().Precio}</span>
+                <span>${change.doc.data().Nombre}</span>
+                <span style="display: block;">Disponibles: ${change.doc.data().Disponibilidad}</span>`
+                console.log(change.doc.id)
+                document.getElementById(change.doc.id).innerHTML = u;
+
+                console.log("Modified city: ", change.doc.data());
+              }
+              if (document.getElementById("info-Ticket").style.display=="block"){
+                TicketEnUso=change.doc
+               var  str1 = `<table><tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">Nombre</span>
+                <span style="color: black">${change.doc.data().Nombre}</span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">Cantidad</span>
+                <span style="color: black">${change.doc.data().Cantidad}</span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">Disponibles</span>
+                <span style="color: black">${change.doc.data().Disponibilidad}</span>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <div class="Container">
+                <span style="display: block;">Precio</span>
+                <span style="color: green;font-weight: bolder;">$${change.doc.data().Precio}</span>
+                </div>
+                </td>
+                </tr>
+                </table>
+                <button onclick="EliminarTicket()">
+                Eliminar
+                </button>`
+                document.getElementById("info-Ticket").innerHTML = str1;
+
+              }
+              
+            }
+            if (change.type === "removed") {
+                console.log("Removed city: ", change.doc.data());
+            }
+        });
+    });
+    // doc.data() is never undefined for query doc snapshots
+    
+  });
+  });
+
+
+  
+    
+}
+
+  var TicketEnUso;
+
+TicketInfo=(T)=>{
+
+  var unsubscribe = EventoEnUso.ref.collection("Tickets").where("Nombre", "==", "Popular")
+    .onSnapshot(function (){
+      unsubscribe();
+    });
+
+// Later ...
+
+// Stop listening to changes
+
+  var str1='<table>'
+    console.log("antes db")
+    db.collection("Evento").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(Evento) {
+        console.log("hola1")
+        Evento.ref.collection("Tickets").orderBy("Nombre", "asc").get().then(function(querySnapshot) {
+          querySnapshot.forEach(function(Ticket) {
+            console.log("hola2")
+            if(Ticket.id == T){
+              TicketEnUso =Ticket;
+              console.log("hola3")
+              str1 += `<tr>
+              <td>
+              <div class="Container">
+              <span style="display: block;">Nombre</span>
+              <span style="color: black">${Ticket.data().Nombre}</span>
+              </div>
+              </td>
+              </tr>
+              <tr>
+              <td>
+              <div class="Container">
+              <span style="display: block;">Cantidad</span>
+              <span style="color: black">${Ticket.data().Cantidad}</span>
+              </div>
+              </td>
+              </tr>
+              <tr>
+              <td>
+              <div class="Container">
+              <span style="display: block;">Disponibles</span>
+              <span style="color: black">${Ticket.data().Disponibilidad}</span>
+              </div>
+              </td>
+              </tr>
+              <tr>
+              <td>
+              <div class="Container">
+              <span style="display: block;">Precio</span>
+              <span style="color: green;font-weight: bolder;">$${Ticket.data().Precio}</span>
+              </div>
+              </td>
+              </tr>`
+              str1 += `</table>
+                <button onclick="EliminarTicket()">
+                Eliminar
+                </button>`
+        ;
+        console.log(str1)
+        document.getElementById("info-Ticket").innerHTML = str1;
+        document.getElementById("info-Ticket").style.display="block"
+        document.getElementById("info-Partido").style.display="none"
+              
+
+            }
+
+
+
+
+
+
+        })//end forEach
+
+        })
+        .then(function(docRef) {
+        
+        //---   
+        })//end then
+        .catch(function(error) {
+        console.error("Error reading the document: ", error);
+        });//end catch
+        
+
+
+
+      })//end forEach
+
+    })
+    .then(function(docRef) {
+
+    //---   
+    })//end then
+    .catch(function(error) {
+      console.error("Error reading the document: ", error);
+    });//end catch
+
+
+
+}
+
+
+
+EliminarTicket=()=>{
+  EventoEnUso.ref.delete()
+          
+          .then(function(docRef) {
+            location.reload(true);
+              
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+}
+
+EliminarEvento=()=>{
+  TicketEnUso.ref.delete()
+          
+          .then(function(docRef) {
+            location.reload(true);
+              
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+}
+
+
+
+FormularioModificarTicket=()=>{
+
+
+str+=`<table>
+<div id="Partido">
+<tr>
+<td>
+<span style="display: block;">Nombre</span>
+<input type="text" name=""id="mod_Ticket_Nombre" value="${TicketEnUso.data().Nombre}">
+</td>
+</tr>
+<tr>
+<td>
+<span style="display: block;">Cantidad</span>
+<input type="numbre" name="" id="mod_Ticket_Cantidad"value="${TicketEnUso.data().Cantidad}">
+</td>
+</tr>
+<tr>
+<td>
+<span style="display: block;">Disponibles</span>
+<input type="" name=""id="mod_Ticket_Disponibles" value="${TicketEnUso.data().Disponibilidad}">
+</td>
+</tr>
+<tr>
+<td>
+<span style="display: block;">Precio</span>
+<input type="" name=""id="mod_Ticket_Precio" value="${TicketEnUso.data().Precio}">
+</td>
+</tr>
+</table><div class="ABM"><button onclick="Formulario()">Modificar</button></div>`;
+console.log(str)
+document.getElementById("mod-Ticket").innerHTML = str;
+document.getElementById("mod-Ticket").style.display="block"
+document.getElementById("info-Ticket").style.display="none"
+document.getElementById("Eventos").style.display="none"
+
+
+
+
+
+}
+
+Modificar=()=>{
+var Nombre= document.getElementById("mod_Ticket_Nombre").value
+var Cantidad= document.getElementById("mod_Ticket_Cantidad").value
+var Disponibles= document.getElementById("mod_Ticket_Disponibles").value
+var Precio= document.getElementById("mod_Ticket_Precio").value
+TicketEnUso.ref.update({
+
+          Nombre: document.getElementById("mod_Ticket_Nombre").value,
+          Cantidad: document.getElementById("mod_Ticket_Cantidad").value,
+          Disponibles: document.getElementById("mod_Ticket_Disponibles").value,
+          Precio: document.getElementById("mod_Ticket_Precio").value
+          
+  })
+  
+  .then(function(docRef) {
+    InfoEstadio(document.getElementById("mod_Nombre").value)
+    document.getElementById("edit-stadium").style.display="none";
+      
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+}
+
+
+AgregarTicket=()=>{
+  EventoEnUso.ref.collection("Tickets").add({
+          Nombre: document.getElementById("inp__Ticket_Nombre").value ,
+          Cantidad :document.getElementById("inp__Ticket_Cantidad").value ,
+          Disponibilidad:document.getElementById("inp__Ticket_Cantidad").value ,
+          Precio:document.getElementById("inp__Ticket_Precio").value 
+
+          })
+          .then(function(docRef) {
+          InfoEvento(EventoEnUso.id)
+          document.getElementById("new-Ticket").style.display = "none";
+
+          })
+          .catch(function(error) {
+          console.error("Error adding document: ", error);
+          });
+}
+
+
+LeerEstadios=()=>{
+var A=`<table>
     <div id="Partido">
     <tr>
       <td>
         <span style="display: block;">Visitante</span>
-        <input type="" name="">
+        <input id="inp_Evento_Visitante" type="" name="">
       </td>
     </tr>
     <tr>
       <td>
         <span style="display: block;">Fecha y Hora</span>
-        <input type="date" name="date" id="dateinput" >
-        <input type="time" name="date" id="dateinput" >
+        <input id="inp_Evento_Fecha" type="date" name="date" id="dateinput" >
+        <input id="inp_Evento_Hora" type="time" name="date" id="dateinput" >
       </td>
     </tr>
     </div>
-  </table></div>
-<div class="new-Stadium" id="info-Partido" >
-  <table>
-    <tr>
-      <td>
-        <div class="Container">
-          <span style="display: block;">Participantes</span>
-          <span style="color: black">Boston Celtics vs Atlanta Hawks</span>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="Container">
-          <span style="display: block;">Fecha y Hora</span>
-          <span style="color: black">11/12/2019 <b>·</b> 16:00hs</span>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="Container">
-          <span style="display: block;">Tickets</span>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="Ticket">
-          <span style="color: green;font-weight: bolder;">$180</span>
-          <span>Plate Media</span>
-          <span style="display: block;">Disponibles: 20</span>
-        </div>
-      </td>
-
-    </tr>
   </table>
-  <button>
-    Agregar
-  </button>
-  <button>
-    Modificar
-  </button>
-  <button>
-    Eliminar
-  </button>
-</div>
+      <div id="myDropdown" class="dropdown-content">
+      
+<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">`;
+  db.collection("Estadio").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(Estadio) {   
+      A+=`
+        <a onclick="SelectEstadio('${Estadio.id}')">${Estadio.data().Nombre}</a>`
+    })
 
-<script type="text/javascript">
+  })
+    .then(function(docRef) {
+      A+=`</div><div class="buttonAgregar"><button style="padding-top:70px;" onclick="newEvento()">Agregar</button></div>
+    `
+      document.getElementById("new-Partido").innerHTML=A
 
+    })
+    .catch(function(error) {
+      console.error("Error adding document: ", error);
+    });
+
+
+
+  }
+
+
+newEvento=()=>{
+    db.collection("Estadio").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(Estadio) {
+
+        if (Estadio.id == EstadioSeleccionado){
+
+            db.collection("Liga").get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(Liga) {
+
+              Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+              querySnapshot.forEach(function(Equipo) {
+
+              if (Equipo.id == document.getElementById("s_Equipo").value){
+
+                  db.collection("Evento").add({
+                  Local:Equipo.id,
+                  Visitante :document.getElementById("inp_Evento_Visitante").value ,
+                  Fecha:document.getElementById("inp_Evento_Fecha").value ,
+                  Hora:document.getElementById("inp_Evento_Hora").value ,
+                  Estadio:Estadio.id,
+                  
+
+                  })
+                  .then(function(docRef) {
+                  console.log("Document written with ID: ", docRef.id);
+                  location.reload(true);
+
+                  })
+                  .catch(function(error) {
+                  console.error("Error adding document: ", error);
+                  });
+
+              }
+
+
+              })
+              })
+              .then(function(docRef) {
+              })
+              .catch(function(error) {
+              console.error("Error adding document: ", error);
+              });
+
+
+            })
+            })
+            .then(function(docRef) {
+            })
+            .catch(function(error) {
+            console.error("Error adding document: ", error);
+            });
+        }
+
+
+      })
+    })
+      .then(function(docRef) {
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+  }
+
+
+
+//-------------------------------------------------------------------
+
+
+var EstadioSeleccionado;
+
+function SelectEstadio(Est){
+  EstadioSeleccionado = Est;
+}
+
+function FormAT(){
+  document.getElementById("info-Partido").style.display = "none";
+  document.getElementById("new-Ticket").style.display = "block";
+}
 
   function Partido(){
     document.getElementById("Eventos").style.display = "none";
@@ -468,15 +1198,10 @@
   }
 
 
-  document.getElementById("Agregar").addEventListener ("click", Agregar, true);
-  document.getElementById("Modificar").addEventListener ("click", Modificar, true);
-  var x = document.getElementsByClassName("Liga");
-  for (var i = 0; i < x.length; i++) {
-    x[i].addEventListener ("click", Liga, true);
-}
 function Agregar(){
   document.getElementById("Eventos").style.display = "none";
   document.getElementById("new-Partido").style.display = "block";
+  LeerEstadios()
 }
 function Modificar(){
   document.getElementById("main-Teams").style.display = "none";

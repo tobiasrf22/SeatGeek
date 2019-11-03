@@ -342,8 +342,8 @@
 
 <div class="sidenav">
   <a href="http://localhost:8080/">Ligas</a>
-  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
-  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
+  <a href="http://localhost:8080/admin/artistas">Artistas</a>
+  <a href="http://localhost:8080/admin/estadios">Estadios</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
 </div>
@@ -590,7 +590,7 @@ const firebaseConfig = {
         </tr>`
         
     });
-    str += '</table><div class="ABM"><button onclick="AgregarLiga()">Agregar</button><button   onclick="Modificar_Liga()">Modificar</button><button onclick="Eliminar_Liga()" >Eliminar</button></div>';
+    str += '</table><div class="ABM"><button onclick="AgregarLiga()">Agregar</button><button style="margin-left:10px;"  onclick="Modificar_Liga()">Modificar</button><button style="margin-left:10px;" onclick="Eliminar_Liga()" >Eliminar</button></div>';
     str2 += '</table><div class="ABM"><button style="background-color:red;" onclick="Salir_Modificar()">Modificar</button></div>';
     str3 += '</table><div class="ABM"><button style="background-color:red;" onclick="Salir_Eliminar()">Eliminar</button></div>';
     console.log(str)
@@ -759,7 +759,7 @@ LeerInfoEquipos=(Equipo)=>{
               }
 
             });
-            str += '</tr></table><div><button onclick="Volver()">Volver</button><button onclick="ModificarEquipoAction()" id="Modificar">Modificar</button><button id="Eliminar" onclick="BorrarEquipo()">Eliminar</button>  </div>';
+            str += '</tr></table><div><button onclick="Volver()">Volver</button><button onclick="ModificarEquipoAction()" style="margin-left:10px;" id="Modificar">Modificar</button><button style="margin-left:10px;" id="Eliminar" onclick="BorrarEquipo()">Eliminar</button>  </div>';
             console.log(str)
             document.getElementById("info-Team").innerHTML = str;
             document.getElementById("info-Team").style.display = "block";
@@ -941,9 +941,16 @@ EliminarEquipo=(Equipo)=>{
           console.log(Equi.data().Nombre + "==" +Equipo)
           if (Equi.data().Nombre == Equipo){
             
-            Equi.ref.delete();
-            LeerEquipos(LigaEnUso)
+            Equi.ref.delete()
+            .then(function(docRef) {
+              LeerEquipos(LigaEnUso)
             document.getElementById("info-Team").style.display = "none";
+              
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+            
           }
         });
         
@@ -963,7 +970,14 @@ EliminarLiga=(L)=>{
     querySnapshot.forEach(function(Liga) {
       console.log(L)
       if (Liga.data().Nombre == L){
-        Liga.ref.delete();
+        Liga.ref.delete()
+        .then(function(docRef) {
+          location.reload(true);
+              
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
         
       }
       
