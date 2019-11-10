@@ -342,7 +342,6 @@
 
 <div class="sidenav">
   <a href="http://localhost:8080/">Ligas</a>
-  <a href="http://localhost:8080/admin/artistas">Artistas</a>
   <a href="http://localhost:8080/admin/estadios">Estadios</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
@@ -479,25 +478,7 @@
       </div>
     </td>
   </tr>
-  <tr>
-    <td>
-      <div class="Container">
-        <span style="display: block;">
-          Estadio
-        </span>
-        <input  type="text" id="inp_Estadio" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><ul id="myUL">
-  <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
-  <li><a href="#">Agnes</a></li>
 
-  <li><a href="#">Billy</a></li>
-  <li><a href="#">Bob</a></li>
-
-  <li><a href="#">Calvin</a></li>
-  <li><a href="#">Christina</a></li>
-  <li><a href="#">Cindy</a></li></ul>
-      </div>
-</td>
-</tr>
 </table>
 <div>
   <button onclick="insertarEquipo()">
@@ -560,7 +541,7 @@ const firebaseConfig = {
         var my_name = doc.data().Nombre;
         str += `<tr>
         <td>
-        <div class="Liga" id="Liga" onclick="Liga('${my_name}')">
+        <div class="Liga" id="Liga" onclick="Liga('${doc.id}')">
         <span>
         ${my_name}
         </span>
@@ -570,7 +551,7 @@ const firebaseConfig = {
         </tr>`
         str2 += `<tr>
         <td>
-        <div class="Liga" id="Liga" onclick="Modificar__Liga('${my_name}')">
+        <div class="Liga" id="Liga" onclick="Modificar__Liga('${doc.id}')">
         <span>
         ${my_name}
         </span>
@@ -580,7 +561,7 @@ const firebaseConfig = {
         </tr>`
         str3 += `<tr>
         <td>
-        <div class="Liga" id="Liga" onclick="Eliminar__Liga('${my_name}')">
+        <div class="Liga" id="Liga" onclick="Eliminar__Liga('${doc.id}')">
         <span>
         ${my_name}
         </span>
@@ -612,14 +593,14 @@ LeerEquipos=(Liga)=>{
     
 querySnapshot.forEach(function(doc) {
 
-    if (doc.data().Nombre == Liga){
+    if (doc.id == Liga){
       
 
 
       doc.ref.collection("Equipos").get().then(function(querySnapshot) {
         querySnapshot.forEach(function(eq) {
           str += `<td>
-          <div  class="Team" id="Team" onclick="Team('${eq.data().Nombre}')">
+          <div  class="Team" id="Team" onclick="Team('${eq.id}')">
           <span style="background-color: ${eq.data().ColorP};" class="Team-abbreviation">
           ${eq.data().AB}
           </span>
@@ -665,17 +646,17 @@ LeerInfoEquipos=(Equipo)=>{
     db.collection("Liga").get().then(function(querySnapshot) {
     var str = '<table>';
     querySnapshot.forEach(function(Liga) {
-        if (Liga.data().Nombre == LigaEnUso){
+        if (Liga.id == LigaEnUso){
           Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
             querySnapshot.forEach(function(Equi) {
-              if(Equi.data().Nombre == Equipo){
+              if(Equi.id== Equipo){
                 str += `<tr>
                 <td>
                 <div class="Container">
                 <span  style="display: block;">
                 Nombre:
                 </span>
-                <input id="info_Nombre" name="prodId" type="hidden" value="${Equi.data().Nombre}">
+                <input id="info_Nombre" name="prodId" type="hidden" value="${Equi.id}">
                 <span   style="color: black">
                 ${Equi.data().Nombre}
                 </span>
@@ -808,13 +789,12 @@ insertarEquipo=()=>{
     var inp_Escudo = document.getElementById("inp_Escudo").value;
     var inp_ColorP = document.getElementById("inp_ColorP").value;
     var inp_ColorS = document.getElementById("inp_ColorS").value;
-    var inp_Estadio = document.getElementById("inp_Estadio").value;
     
 
     db.collection("Liga").get().then(function(querySnapshot) {
     var str = '<table>';
     querySnapshot.forEach(function(Liga) {
-        if (Liga.data().Nombre == LigaEnUso){
+        if (Liga.id == LigaEnUso){
           Liga.ref.collection('Equipos').add({
           Nombre: inp_Nombre,
           AB:inp_AB,
@@ -822,8 +802,7 @@ insertarEquipo=()=>{
           Localidad:inp_Localidad,
           Escudo:inp_Escudo,
           ColorP:inp_ColorP,
-          ColorS :inp_ColorS,
-          Estadio:inp_Estadio
+          ColorS :inp_ColorS
 
           })
           .then(function(docRef) {
@@ -847,7 +826,7 @@ ModificarModificarLiga=()=>{
   db.collection("Liga").get().then(function(querySnapshot) {
     
     querySnapshot.forEach(function(doc) {
-      if (doc.data().Nombre == LigaEnUso ){
+      if (doc.id == LigaEnUso ){
         doc.ref.update({
                   Nombre: document.getElementById("mod_Liga_Nombre").value,
                   Historia: document.getElementById("mod_Liga_Historia").value,
@@ -871,7 +850,7 @@ ModificarLiga=(Liga)=>{
   db.collection("Liga").get().then(function(querySnapshot) {
     
   querySnapshot.forEach(function(doc) {
-    if (doc.data().Nombre == Liga ){
+    if (doc.id == Liga ){
       str += `<tr>
       <td>
       <div class="Container">
@@ -933,13 +912,13 @@ EliminarEquipo=(Equipo)=>{
   
   db.collection("Liga").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(Liga) {
-      if (Liga.data().Nombre == LigaEnUso){
+      if (Liga.id == LigaEnUso){
         Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
           console.log("entré")
           
         querySnapshot.forEach(function(Equi) {
           console.log(Equi.data().Nombre + "==" +Equipo)
-          if (Equi.data().Nombre == Equipo){
+          if (Equi.id == Equipo){
             
             Equi.ref.delete()
             .then(function(docRef) {
@@ -969,7 +948,7 @@ EliminarLiga=(L)=>{
   db.collection("Liga").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(Liga) {
       console.log(L)
-      if (Liga.data().Nombre == L){
+      if (Liga.id == L){
         Liga.ref.delete()
         .then(function(docRef) {
           location.reload(true);
@@ -991,10 +970,10 @@ ModificarEquipo=()=>{
     db.collection("Liga").get().then(function(querySnapshot) {
     var str = '<table>';
     querySnapshot.forEach(function(Liga) {
-        if (Liga.data().Nombre == LigaEnUso){
+        if (Liga.id == LigaEnUso){
           Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
             querySnapshot.forEach(function(Equi) {
-              if(Equi.data().Nombre == EquipoEnUso){
+              if(Equi.id == EquipoEnUso){
                 str += `
                 <tr>
                 <td>
@@ -1066,25 +1045,7 @@ ModificarEquipo=()=>{
                 </div>
                 </td>
                 </tr>
-                <tr>
-                <td>
-                <div class="Container">
-                <span style="display: block;">
-                Estadio
-                </span>
-                <input type="text" id="mod_Estadio" onkeyup="myFunction()" value="${Equi.data().Estadio}" title="Type in a name"><ul id="myUL">
-                <li><a href="#" onclick="select_stadium(this)">Adele</a></li>
-                <li><a href="#">Agnes</a></li>
-
-                <li><a href="#">Billy</a></li>
-                <li><a href="#">Bob</a></li>
-
-                <li><a href="#">Calvin</a></li>
-                <li><a href="#">Christina</a></li>
-                <li><a href="#">Cindy</a></li></ul>
-                </div>
-                </td>
-                </tr>`
+                `
 
 
               }
@@ -1115,10 +1076,12 @@ ModificarModificarEquipo=()=>{
   console.log(document.getElementById("mod_Estadio").value)
   db.collection("Liga").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(Liga) {
-        if (Liga.data().Nombre == LigaEnUso){
+      console.log(LigaEnUso)
+        if (Liga.id== LigaEnUso){
           Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
             querySnapshot.forEach(function(Equi) {
-              if(Equi.data().Nombre == EquipoEnUso){
+              console.log(EquipoEnUso)
+              if(Equi.id == EquipoEnUso){
                 Equi.ref.update({
                   Nombre: document.getElementById("mod_Nombre").value,
                   AB: document.getElementById("mod_AB").value,
@@ -1128,11 +1091,14 @@ ModificarModificarEquipo=()=>{
                   ColorP: document.getElementById("mod_ColorP").value,
                   ColorS: document.getElementById("mod_ColorS").value,
                   Estadio: document.getElementById("mod_Estadio").value
-                });
+                }).then(function(docRef) {
+                  document.getElementById("edit-Team").style.display = "none";
+            LeerInfoEquipos(Equi.id)
+   
+    })
                 
               }
-            document.getElementById("edit-Team").style.display = "none";
-            LeerInfoEquipos(document.getElementById("mod_Nombre").value)
+            
             });
             
             
@@ -1147,7 +1113,7 @@ ModificarModificarEquipo=()=>{
 }
 
 function ModificarEquipoAction(){
-ModificarEquipo(document.getElementById("info_Nombre").value)
+ModificarEquipo()
 }
 
 function BorrarEquipo(){

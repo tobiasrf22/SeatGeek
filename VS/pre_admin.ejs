@@ -1,0 +1,82 @@
+<html>
+<body>
+        <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+<script>
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAxZ4pVevrj9SRxp3EWlfYieKvA7V6ch68",
+    authDomain: "superliga-179605.firebaseapp.com",
+    databaseURL: "https://superliga-179605.firebaseio.com",
+    projectId: "superliga-179605",
+    storageBucket: "",
+    messagingSenderId: "952837515941",
+    appId: "1:952837515941:web:13eabd2f5950d32a"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    
+    var db = firebase.firestore();
+
+window.onload = function () {
+    base_provider= new firebase.auth.GoogleAuthProvider()
+        firebase.auth().signInWithPopup(base_provider)
+        .then(function(result){
+            Admin()
+        console.log("Success....Google Linked")
+        }).catch(function(err){
+            console.log(err)
+            console.log("Fail")
+        })
+};
+
+
+Admin=()=>{
+
+    db.collection("Admin").get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(Admin) {
+    firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log(user.email, "==", Admin.data().Mail)
+                if (user.email == Admin.data().Mail){
+                    document.location.href = "http://localhost:8080/qw8pSpWEvGVKQzSA/admin";
+
+                }
+                else{
+                    alert("NO ERES UN USUARIO ADMINISTRADOR")
+                    document.location.href = "http://localhost:8080/home";
+                }
+                    
+                }
+                else {
+                    
+
+                    
+            }
+            });
+
+
+    
+})
+
+})
+.then(function(docRef) {
+  
+            
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+
+
+
+
+
+
+    
+
+}
+</script>
+</body>
+</html>

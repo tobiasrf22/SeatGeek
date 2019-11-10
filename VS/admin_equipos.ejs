@@ -342,7 +342,6 @@
 
 <div class="sidenav">
   <a href="http://localhost:8080/">Ligas</a>
-  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_artists.html">Artistas</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
   <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
@@ -554,7 +553,6 @@ insertarEquipo=()=>{
     var inp_Escudo = document.getElementById("inp_Escudo").value;
     var inp_ColorP = document.getElementById("inp_ColorP").value;
     var inp_ColorS = document.getElementById("inp_ColorS").value;
-    var inp_Estadio = document.getElementById("inp_Estadio").value;
     
     db.collection("Liga").doc(LigaEnUso).collection('Equipos').add({
     Nombre: inp_Nombre,

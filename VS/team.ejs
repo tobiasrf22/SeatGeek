@@ -421,149 +421,17 @@ input[type=text]:focus,input[type=text]:hover  {
 <body>
 
 <div class="navbar">
-        <a href="#home">Sign Up</a>
-        <a id="In" href="#" onclick="googleSignIn()" >Log In</a>
+
+        <a id="In"  onclick="googleSignIn()" >Log In</a>
+        <a style="display: none;" id="Out" onclick="googleSignout()">Log Out</a>
         <!--<a id="Out" onclick="googleSignout()">Log Out</a>-->
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-<div class="dropdown">
-    <button class="dropbtn" id="Music">Music 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-    <a href="#">MLB
-        <table cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
- 
-                </td>
-            </tr>
-        </table>
-        <table id="second" cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
-                    <a href="">Atlanta Concerts</a>
- 
-                </td>
-            </tr>
-        </table></a>
-    <a href="#">WWE
-        <table cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Wrestlemania</a>
-                    <a href="">Wrestlemania</a>
-                    <a href="">Wrestlemania</a>
-                    <a href="">Wrestlemania</a>
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Wrestlemania</a>
-                    <a href="">Wrestlemania</a>
-                    <a href="">Wrestlemania</a>
-                    <a href="">Wrestlemania</a>
- 
-                </td>
-            </tr>
-        </table>
-        <table id="second" cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
 
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
- 
-                </td>
-            </tr>
-        </table></a>
-    <a href="#">NFL
-        <table cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
- 
-                </td>
-            </tr>
-        </table>
-        <table id="second" cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
 
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
-                    <a href="">Patriots</a>
- 
-                </td>
-            </tr>
-        </table></a>
-    </div>
-</div>
 <div class="dropdown">
     <button class="dropbtn" id="Sports">Sports 
       <i class="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-content">
+    <div class="dropdown-content" id="dropdown-content">
     <a href="#">MLB
         <table cellspacing="" style="width:200%">
             <tr>
@@ -695,9 +563,12 @@ input[type=text]:focus,input[type=text]:hover  {
 </div></div></div>
 
 
-<div class="path"><a href="/home/farappa/Escritorio/SeatGeek-master/asdasd.html">Home</a><span> / </span><a href="/home/farappa/Escritorio/SeatGeek-master/league.html">NBA</a>
+<div id="path" class="path"><a href="/home/farappa/Escritorio/SeatGeek-master/asdasd.html">Home</a><span> / </span><a href="/home/farappa/Escritorio/SeatGeek-master/league.html">NBA</a>
 </div>
-<h1 id="tittle" style="color: white">Boston Celtics Tickets</h1>
+<div id="tittle">
+        <h1 id="tittle" style="color: white">Boston Celtics Tickets</h1>
+</div>
+
 <div>
     <table class="carac">
     <tr>
@@ -708,31 +579,8 @@ input[type=text]:focus,input[type=text]:hover  {
 </table>
 </div>
 
-<div class="UG" style="margin-top: 6%;margin-left: 21.5%;transform: scale(1.2);" ><b style="padding-right: 15%" >Upcoming Games</b>
-<select>
-  <option  value="volvo">Date</option>
-  <option value="saab">Saab</option>
-  <option value="opel">Opel</option>
-  <option value="audi">Audi</option>
-</select>
+<div id="UG" class="UG" style="margin-top: 6%;margin-left: 21.5%;transform: scale(1.2);" ><b style="padding-right: 15%" >Upcoming Games</b>
 
-<div class="HA">
-<button id="Home" onclick="Home(this)" > Home</button>
-<button id="Away" onclick="Away(this)" style="margin-left: -6px">Away</button>    
-<select>
-  <option  value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="opel">Opel</option>
-  <option value="audi">Audi</option>
-</select>
-<div class="right-menu"> 
-
-<div id="Events"class="Events" ><a onclick="Events(this)"href="#">Events</a></div>
-<div id="Parking"class="Parking" ><a onclick="Parking(this)"href="#">Parking Passes</a></div>
-<div id="Playoff"class="Playoff" ><a onclick="Playoff(this)"href="#">Playoff Tickets</a></div>
-
-</div>
-</div>
 <div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
 <div  class="left"><p><b id="date">Oct 11</b></p><p>Fri 7:00pm</p></div> 
 <div class="right"><p><b id="game">  Boston Celtics vs Atlanta Hawks</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
@@ -785,9 +633,235 @@ input[type=text]:focus,input[type=text]:hover  {
 <div class="story">
     <span></span>
 </div>
-
-
+<input type="hidden" id="equipo" value="<%= equipo %>">
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
 <script>
+console.log("==>"+document.getElementById("equipo").value+"<==")
+const firebaseConfig = {
+    apiKey: "AIzaSyAxZ4pVevrj9SRxp3EWlfYieKvA7V6ch68",
+    authDomain: "superliga-179605.firebaseapp.com",
+    databaseURL: "https://superliga-179605.firebaseio.com",
+    projectId: "superliga-179605",
+    storageBucket: "",
+    messagingSenderId: "952837515941",
+    appId: "1:952837515941:web:13eabd2f5950d32a"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                var displayName = user.displayName;
+                var email = user.email;
+                var emailVerified = user.emailVerified;
+                var photoURL = user.photoURL;
+                var isAnonymous = user.isAnonymous;
+                var uid = user.uid;
+                var providerData = user.providerData;
+                    
+                }
+                else {
+                    
+            }
+            });
+
+
+
+
+
+/*
+
+var str=``;
+
+    db.collection("Liga").get().then(function(querySnapshot) {
+
+
+    querySnapshot.forEach(function(Liga) {
+    str+=`<form id="Post_Liga" method="POST" action="/Liga"> 
+    <a onclick="Liga()" >${Liga.data().Nombre}</a>
+    <input type="hidden" id="id_Liga value="${Liga.id}">
+  </form>`
+  
+    })
+
+    })
+    .then(function(docRef) {
+      document.getElementById("dropdown-content").innerHTML=str
+   
+    })
+    .catch(function(error) {
+    console.error("Error adding document: ", error);
+    });
+
+
+
+var path=``;
+var tittle=``;
+var Game=``;
+    db.collection("Liga").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(Liga) {
+
+
+            Liga.ref.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(Equi) {
+            if(Equi.data().Nombre == "Boston Celtics"){
+                path+=`<a href="/home/farappa/Escritorio/SeatGeek-master/asdasd.html">Home</a><span>
+                     / </span><a href="/home/farappa/Escritorio/SeatGeek-master/league.html">"${Liga.data().Nombre}"</a>`
+                tittle+=`<h1 id="tittle" style="color: white">${Equi.data().Nombre} Tickets</h1>`;
+
+                db.collection("Evento").get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(Evento) {
+                        if(Evento.data().Local == Equi.id){
+                            str+=`<div class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+                            <div  class="left"><p><b id="date">${Evento.data().Fecha}</b></p><p>${Evento.data().Hora}</p></div> 
+                            <div class="right"><p><b id="game">  ${Equi.data().Nombre}s vs ${Evento.data().Visitante}</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+                            <div class="but"><button>Comprar</button></div>
+                            </div>`
+                        }
+                
+
+                })
+
+                })
+                .then(function(docRef) {
+                    document.getElementById("path").innerHTML=path
+                    document.getElementById("tittle").innerHTML=tittle
+                    document.getElementById("UG").innerHTML=Game
+                
+
+                })
+                .catch(function(error) {
+                console.error("Error adding document: ", error);
+                });
+                
+
+            }
+            
+
+        })
+
+    })
+        .then(function(docRef) {
+            document.getElementById("dropdown-content").innerHTML=str
+
+    })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+    });
+
+        })
+
+    })
+        .then(function(docRef) {
+            document.getElementById("dropdown-content").innerHTML=str
+
+    })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+    });
+
+
+    
+*/
+
+
+
+
+var navS=``;
+var path=``;
+var tittle=``;
+var Game=``;
+var str = '';
+
+db.collection("Liga").get().then(function(querySnapshot) {
+    
+  querySnapshot.forEach(function(Liga) {
+    navS+=`<form id="Post_Liga_${Liga.id}" method="POST" action="/Liga"> 
+    <a onclick="Liga('${Liga.id}')" >${Liga.data().Nombre}</a>
+    <input type="hidden" id="id_Liga" name="id_Liga" value="${Liga.id}">
+  </form>`
+    console.log(Liga.data().Nombre)
+    Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(Equipo) {
+            console.log(Equipo.data().Nombre)
+            if(Equipo.id == document.getElementById("equipo").value){
+                console.log("==>",Equipo.data().Nombre,"<==");
+                db.collection("Evento").get().then(function(querySnapshot) {
+                    path+=`<a href="/home/farappa/Escritorio/SeatGeek-master/asdasd.html">Home</a><span>
+                     / </span><a href="/home/farappa/Escritorio/SeatGeek-master/league.html">"${Liga.data().Nombre}"</a>`
+                tittle+=`<h1 id="tittle" style="color: white">${Equipo.data().Nombre} Tickets</h1>`;
+                    
+                querySnapshot.forEach(function(Evento) {
+                    if (Evento.data().Local == Equipo.id){
+                        str+=`<form id="Post_${Evento.id}" method="POST" action="/tickets">
+                        <div onclick="Evento('${Evento.id}')" class="Games" onmouseover="OnhoverGames(this)" onmouseout="OuthoverGames(this)">
+                            <div  class="left"><p><b id="date">${Evento.data().Fecha}</b></p><p>${Evento.data().Hora}</p></div> 
+                            <div class="right"><p><b id="game">  ${Equipo.data().Nombre}s vs ${Evento.data().Visitante}</b></p><p style="color: grey;">Away-Td Garden-Boston</p> </div>   
+                            <div class="but"></div>
+                            </div>
+                        <input type="hidden" id="id_Evento" name="id_Evento" value="${Evento.id}">
+                        </form>`
+                    }
+
+
+
+                })
+
+                })
+                .then(function(docRef) {
+                    document.getElementById("UG").innerHTML=str
+                    document.getElementById("dropdown-content").innerHTML=navS
+                    document.getElementById("path").innerHTML=path
+                    document.getElementById("tittle").innerHTML=tittle
+
+                })
+                .catch(function(error) {
+                console.error("Error adding document: ", error);
+                });
+
+            }
+
+
+
+
+        })
+
+    })
+        .then(function(docRef) {
+
+
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+  
+  
+      
+  })
+  
+  })
+  .then(function(docRef) {
+    
+              
+          })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+
+          function Evento(a){
+  document.getElementById(`Post_${a}`).submit();
+}
+
+
+function Liga(a){
+  document.getElementById(`Post_Liga_${a}`).submit();
+}
+//-------------------------------------
     var H = document.getElementById("Home");
     var A = document.getElementById("Away");
 
@@ -835,6 +909,34 @@ input[type=text]:focus,input[type=text]:hover  {
         E.style.color="black";
         P.style.color="black";
     }
+
+
+    googleSignIn=()=>{
+        base_provider= new firebase.auth.GoogleAuthProvider()
+        firebase.auth().signInWithPopup(base_provider)
+        .then(function(result){
+          document.getElementById(`In`).style.display="none"
+          document.getElementById(`Out`).style.display="block"
+        console.log("Success....Google Linked")
+        }).catch(function(err){
+            console.log(err)
+            console.log("Fail")
+        })
+        
+    }
+
+
+    googleSignout=()=>{
+        firebase.auth().signOut().then(function() {
+          document.getElementById(`In`).style.display="block"
+          document.getElementById(`Out`).style.display="none"
+        console.log('Signed Out');
+        }, function(error) {
+        console.error('Sign Out Error', error);
+        });
+            
+        }
+  
 </script>
 </body>
 </html>

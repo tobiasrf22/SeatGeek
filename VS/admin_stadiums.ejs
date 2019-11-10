@@ -342,7 +342,6 @@
 
     <div class="sidenav">
         <a href="http://localhost:8080/">Ligas</a>
-        <a href="http://localhost:8080/admin/artistas">Artistas</a>
         <a href="http://localhost:8080/admin/estadios">Estadios</a>
         <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
         <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
@@ -409,7 +408,7 @@ db.collection("Estadio").get().then(function(querySnapshot) {
       var my_name = doc.data().Nombre;
       str += `
     <td>
-      <div class="Liga" id="Liga" onclick="InfoEstadio('${doc.data().Nombre}')">
+      <div class="Liga" id="Liga" onclick="InfoEstadio('${doc.id}')">
         <span>
           ${doc.data().Nombre}
         </span>
@@ -633,7 +632,7 @@ db.collection("Estadio").get().then(function(querySnapshot) {
   
   var c= 0;
 querySnapshot.forEach(function(doc) {
-    if (doc.data().Nombre == Est){
+    if (doc.id == Est){
       str += `
     <tr>
     <td>
@@ -712,11 +711,20 @@ document.getElementById("info-stadium").style.display = "block";
 
 
 DelEstadio=()=>{
-
-  db.collection("Estadio").get().then(function(querySnapshot) {
+  db.collection("Evento").get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(Evento) {
+    db.collection("Estadio").get().then(function(querySnapshot) {
     
-    querySnapshot.forEach(function(doc) {
-      if (doc.data().Nombre == EstadioEnUso ){
+    querySnapshot.forEach(function(Estadio) {
+      
+
+      if (doc.id == EstadioEnUso ){
+        if (Evento.data().Estadio == Estadio.id){
+          
+          alert("Este estadio tiene eventos en los proximos dias")
+        
+      }
+      else{
         doc.ref.delete()
           
           .then(function(docRef) {
@@ -726,6 +734,8 @@ DelEstadio=()=>{
           .catch(function(error) {
               console.error("Error adding document: ", error);
           });
+      }
+        
           
         
       }
@@ -733,6 +743,21 @@ DelEstadio=()=>{
   });
 
   });
+    
+})
+
+})
+.then(function(docRef) {
+  
+            
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+
+
+
+  
 
 }
 
@@ -800,7 +825,7 @@ UpdEstadio=()=>{
   db.collection("Estadio").get().then(function(querySnapshot) {
     
     querySnapshot.forEach(function(doc) {
-      if (doc.data().Nombre == EstadioEnUso ){
+      if (doc.id == EstadioEnUso ){
         doc.ref.update({
                   Nombre: document.getElementById("mod_Nombre").value,
                   Historia: document.getElementById("mod_Historia").value,

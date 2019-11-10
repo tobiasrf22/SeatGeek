@@ -2,9 +2,9 @@
 <html>
 <head>
 <style>
-    body {
+body {
   font-family: Arial, Helvetica, sans-serif;
- background-image: url("https://cdn1.imggmi.com/uploads/2019/9/19/ba50a9a558f5be63bb9e8f1622378c45-full.png");
+ background-image: url("https://www.beautycolorcode.com/1673e6.png");
 
  background-size: 100% 500px;
  background-repeat: no-repeat;
@@ -90,8 +90,8 @@ background-image: transparent;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 0px;
-  border-bottom-right-radius:0px ;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 0px;
+  border-radius: 10px;
   padding-top: 6px;
   padding-bottom: 2.6px;
 
@@ -399,7 +399,6 @@ input[type=text]:focus,input[type=text]:hover  {
          background:url("https://cdn1.imggmi.com/uploads/2019/9/22/36f9108ff268aa1c190ce2563ed9d53d-full.png"); 
         }
 
-        
 </style>
 <link rel = "stylesheet"
    type = "text/css"
@@ -412,110 +411,23 @@ input[type=text]:focus,input[type=text]:hover  {
     <button class="dropbtn" id="Sports">Sports 
       <i class="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-content">
-    <a href="#">MLB
-        <table cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
- 
-                </td>
-            </tr>
-        </table>
-        <table id="second" cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="#">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
-                    <a href="">Red Sox</a>
- 
-                </td>
-            </tr>
-        </table></a>
-    <a href="#">NBA
-        <table cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
- 
-                </td>
-            </tr>
-        </table>
-        <table id="second" cellspacing="" style="width:200%">
-            <tr>
-                <td>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-
- 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
-                    <a href="">Boston Celtics</a>
- 
-                </td>
-            </tr>
-        </table></a>
-    <a href="#">NHL</a>
-    <a href="#">NFL</a> 
+    <div class="dropdown-content"  id="dropdown-content"> 
     </div>
   </div>
   
-  <a href="#home">Home</a>
-  <a href="#news">News</a>
+
    <div class="right">
-        <a href="#home">Sign Up</a>
-        <a id="In" href="#" onclick="googleSignIn()" >Log In</a>
+        
+        <a id="In"  onclick="googleSignIn()" >Log In</a>
         <a id="Out" onclick="googleSignout()">Log Out</a>
    </div>
 </div>
 
+<div>
+    <span style="display: block;color: white;font-size:50px;margin-left: 36%;margin-top: 7%;font-family: Tahoma, Geneva, sans-serif;font-weight: bolder;">La vida es un partido.</span>
+    <span style="display: block;color: white;font-size:50px;margin-left: 30%;font-family: Tahoma, Geneva, sans-serif;font-weight: bolder;">Nosotros tenemos las entradas.</span>
+</div>
 
-<div class="search-container">
-        <input type="text" autocomplete="off" name="search" placeholder="Search by team, artist, event, or venue">
-  </div>
 <div id="slider-holder" class="slider-holder">
         <span id="slider-image-1"></span>
         <span id="slider-image-2"></span>
@@ -545,51 +457,17 @@ input[type=text]:focus,input[type=text]:hover  {
             </div>
         </div>
         <div class="button-holder">
-            <button id="button_1" onclick="slider_image_2()" class="slider-change" style="cursor: pointer"></button>
-            <button id="button_2" onclick="slider_image_1()" class="slider-change" style="cursor: pointer"></button>
+            <button id="button_1" onclick="slider_image_2()" class="slider-change"></button>
+            <button id="button_2" onclick="slider_image_1()" class="slider-change"></button>
         </div>
     </div>
+    
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
     <script>
-    var b2 = document.getElementById("button_2");
-    var b1 = document.getElementById("button_1");
-    b2.style.display ="none";
-    var d = document.getElementById("image-holder");
-    d.style.left = "0px";
-
-function slider_image_1(){
-    var d = document.getElementById("image-holder");
-    d.style.left = "0px";
-    b2.style.display ="none";
-    b1.style.display ="block";
-}
 
 
-function slider_image_2(){
-    var d = document.getElementById("image-holder");
-    d.style.left = "-880px";
-    b2.style.display ="block";
-        b1.style.display ="none";
-}
-    
-    function Dover(x) {
-        var d = document.getElementById(x.id + 1);
-        d.style.display = "block";
-        x.style.backgroundColor = "#e0e8ff";
-}
-   
-
-
-//---------------------------------------------------
-
-    
-    var B_out = document.getElementById("out");
-    var B_in = document.getElementById("in");
-    var B_Agregar = document.getElementById("Agregar");
-    var B_Modificar = document.getElementById("Modificar");
-    
-    const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyAxZ4pVevrj9SRxp3EWlfYieKvA7V6ch68",
     authDomain: "superliga-179605.firebaseapp.com",
     databaseURL: "https://superliga-179605.firebaseio.com",
@@ -603,179 +481,115 @@ function slider_image_2(){
 
     
     var db = firebase.firestore();
-    googleSignIn=()=>{
+
+    firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                var displayName = user.displayName;
+                var email = user.email;
+                var emailVerified = user.emailVerified;
+                var photoURL = user.photoURL;
+                var isAnonymous = user.isAnonymous;
+                var uid = user.uid;
+                var providerData = user.providerData;
+                    
+                }
+                else {
+                    
+            }
+            });
+
+
+            var str=``;
+            var str2=``;
+    db.collection("Liga").get().then(function(querySnapshot) {
+
+
+    querySnapshot.forEach(function(Liga) {
+    str+=`<form id="Post_Liga_${Liga.id}" method="POST" action="/Liga"> 
+    <a onclick="Liga('${Liga.id}')" >${Liga.data().Nombre}</a>
+    <input type="hidden" id="id_Liga" name="id_Liga" value="${Liga.id}">
+  </form>`
+  str2+=`<div onclick="Liga('${Liga.id}')" class="Concert" style="background-image: url(${Liga.data().Escudo});">
+            <a href="www.google.com">
+            <a>${Liga.data().Nombre}</a>
+            </a>
+            </div>`;
+    })
+
+    })
+    .then(function(docRef) {
+      document.getElementById("dropdown-content").innerHTML=str
+      document.getElementById("image-holder").innerHTML=str2
+   
+    })
+    .catch(function(error) {
+    console.error("Error adding document: ", error);
+    });
+
+
+
+
+function Liga(a){
+  document.getElementById(`Post_Liga_${a}`).submit();
+}
+
+googleSignIn=()=>{
         base_provider= new firebase.auth.GoogleAuthProvider()
-        firebase.auth().signInWithPopup(base_provider).then(function(result){
+        firebase.auth().signInWithPopup(base_provider)
+        .then(function(result){
+          document.getElementById(`In`).style.display="none"
+          document.getElementById(`Out`).style.display="block"
         console.log("Success....Google Linked")
-        document.getElementById("In").style.display = "none";
-        document.getElementById("Out").style.display = "block";
         }).catch(function(err){
             console.log(err)
             console.log("Fail")
         })
         
     }
-  
+
+
     googleSignout=()=>{
         firebase.auth().signOut().then(function() {
+          document.getElementById(`In`).style.display="block"
+          document.getElementById(`Out`).style.display="none"
         console.log('Signed Out');
-        document.getElementById("In").style.display = "block";
-        document.getElementById("Out").style.display = "none";
         }, function(error) {
         console.error('Sign Out Error', error);
         });
             
         }
-
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                // User is signed in.
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var isAnonymous = user.isAnonymous;
-                var uid = user.uid;
-                var providerData = user.providerData;
-                    
-                }
-                else {
-                    
-            }
-            });
-                // ...
-          
-
-insertarJug=()=>{
-    var inp_Nombre = document.getElementById("inp_Nombre").value;
   
-    db.collection("Jugadores").add({
-    Nombre: inp_Nombre
-})
-.then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-});
-Leer()
-var elem = document.getElementById('form');
-    elem.parentNode.removeChild(elem);
+
+
+
+
+//------------------------------------------------------------------------
+    var b2 = document.getElementById("button_2");
+    var b1 = document.getElementById("button_1");
+    b2.style.display ="none";
+    var d = document.getElementById("image-holder");
+    d.style.left = "0px";
+function slider_image_1(){
+    var d = document.getElementById("image-holder");
+    d.style.left = "0px";
+    b2.style.display ="none";
+    b1.style.display ="block";
 }
-
-Modif_jug=()=>{
-
-    var old_Nombre = document.getElementById("old_Nombre").value;
-    var new_Nombre = document.getElementById("new_Nombre").value;
-
-    db.collection("Jugadores").where("Nombre", "==", old_Nombre)
-  .get()
-  .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          console.log(doc.id, " => ", doc.data());
-          // Build doc ref from doc.id
-          db.collection("Jugadores").doc(doc.id).update({Nombre: new_Nombre});
-          Leer()
-        var elem = document.getElementById('mod');
-        elem.parentNode.removeChild(elem);
-      });
- })
-
+function slider_image_2(){
+    var d = document.getElementById("image-holder");
+    d.style.left = "-880px";
+    b2.style.display ="block";
+        b1.style.display ="none";
 }
-
-
-Modificar=(string)=>{
-    var str = '<div id="mod">';
-    str += '<input type="text" id="old_Nombre" name="inp_Nombre" placeholder="Nombre antiguo">'
-    str += '<input type="text" id="new_Nombre" name="inp_Nombre" placeholder="Nombre nuevo">'
-    str+='<input type="submit" value="Modificar" onclick="Modif_jug()">'
-    str+='</div>';
-    document.getElementById("formulario").innerHTML = str;
-}
-
-Eliminar=(string)=>{
-    firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                var result = confirm("Want to delete?");
-                if (result) {
-                    db.collection("Jugadores").where("Nombre", "==", string)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            doc.ref.delete();
-            Leer()
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-                }
-                // User is signed in.
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var isAnonymous = user.isAnonymous;
-                var uid = user.uid;
-                var providerData = user.providerData;
-                    
-                    
-                }
-                else {
-                    
-                    
-            }
-            });
     
-
-    /*db.collection("cities").where("Nombre", "==", "CA").delete().then(function() {
-    console.log("Document successfully deleted!");
-}).catch(function(error) {
-    console.error("Error removing document: ", error);
-});*/
+    function Dover(x) {
+        var d = document.getElementById(x.id + 1);
+        d.style.display = "block";
+        x.style.backgroundColor = "#e0e8ff";
 }
+   
+     </script>
 
-Leer=()=>{
-    db.collection("Jugadores").get().then(function(querySnapshot) {
-    var str = '';
-    querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data().Nombre);
-        var my_name = doc.data().Nombre;
-        str += `<li style="color: #ddd" id="Jug" onclick="Eliminar('${my_name}')">${my_name}</li>`
-        
-    });
-    console.log(str)
-    document.getElementById("slideContainer").innerHTML = str;
-});
-}
-
-        
-db.collection("Jugadores").get().then(function(querySnapshot) {
-    var str = '';
-    querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data().Nombre);
-        var my_name = doc.data().Nombre;
-        str += `<li style="color: #ddd" id="Jug" onclick="Eliminar('${my_name}')">${my_name}</li>`
-        
-    });
-    console.log(str)
-    document.getElementById("slideContainer").innerHTML = str;
-});    
-
-Agregar=()=>{
-    var str = '<div id="form">';
-    str += '<input type="text" id="inp_Nombre" name="inp_Nombre" placeholder="Nombre">'
-    str+='<input type="submit" value="Agregar" onclick="insertarJug()">'
-    str+='</div>';
-    document.getElementById("formulario").innerHTML = str;
-}
-
-
-    
-    </script>
 </body>
 </html>
-

@@ -17,20 +17,50 @@ app.use(express.json())
 const { check, validationResult } = require('express-validator/check');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-app.get( "/", ( req, res) => {
-    res.render("admin"); 
 
-} );
 
 app.get( "/home", ( req, res) => {
     res.render("asdasd"); 
 
 } );
 
-app.get( "/admin/artistas", ( req, res) => {
-    res.render("admin_artists"); 
+
+app.post( "/Liga", ( req, res) => {
+    console.log(req.body.id_Liga)
+    res.render("ne",{liga:req.body.id_Liga}); 
 
 } );
+
+
+
+app.post( "/Equipo", ( req, res) => {
+    console.log(req.body.id_Equipo)
+    res.render("team",{equipo:req.body.id_Equipo}); 
+
+} );
+
+
+app.post( "/tickets", ( req, res) => {
+    res.render("tickets",{evento:req.body.id_Evento}); 
+
+} );
+
+app.get( "/qw8pSpWEvGVKQzSA/pre/", ( req, res) => {
+    res.render("pre_admin"); 
+
+} );
+
+
+app.get( "/qw8pSpWEvGVKQzSA/admin/", ( req, res) => {
+    res.render("admin"); 
+
+} );
+
+app.post( "/compra", ( req, res) => {
+    res.render("compra",{evento:req.body.id_Evento,ticket:req.body.id_Ticket}); 
+
+} );
+
 
 
 
@@ -38,6 +68,7 @@ app.get( "/admin/estadios", ( req, res) => {
     res.render("admin_stadiums"); 
 
 } );
+
 
 app.get( "/admin/eventos", ( req, res) => {
     res.render("admin_evento"); 

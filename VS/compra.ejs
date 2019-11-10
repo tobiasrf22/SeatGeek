@@ -11,6 +11,7 @@ body {
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
+  overflow-y: hidden;
 }
 
 * {
@@ -177,16 +178,234 @@ span.price {
   </div>
   <div class="col-25">
     <div class="container">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <select>
-        <option>1</option>
-        <option>2</option>
-      </select></span></h4>
-      <p><span>Boston Celtics vs Atlanta Hawks</span> <span class="price">$15</span></p>
+      <p><span id="E"></span> <span id="price" class="price">$15</span></p>
       <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+      <p>Total <span class="price" style="color:black"><b id="TotalPrice">$30</b></span></p>
+      <div><span >Tiempo Restante: </span><span style="color: red;" id="time">03:00</span></div>
     </div>
   </div>
 </div>
 
+<input type="hidden" id="evento" value="<%= evento %>">
+<input type="hidden" name="ticket" id="ticket" value="<%= ticket %>">
+
+<form id="Post_Evento" method="POST" action="/tickets">
+  <input type="hidden" name="id_Evento" id="id_Evento" value="<%= evento %>">
+</form>
+
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+<script type="text/javascript">
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAxZ4pVevrj9SRxp3EWlfYieKvA7V6ch68",
+    authDomain: "superliga-179605.firebaseapp.com",
+    databaseURL: "https://superliga-179605.firebaseio.com",
+    projectId: "superliga-179605",
+    storageBucket: "",
+    messagingSenderId: "952837515941",
+    appId: "1:952837515941:web:13eabd2f5950d32a"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    
+    var db = firebase.firestore();
+  function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+            
+            
+          
+            db.collection("Evento").get().then(function(querySnapshot) {
+
+            querySnapshot.forEach(function(Evento) {
+              Evento.ref.collection("Tickets").get().then(function(querySnapshot) {
+
+              querySnapshot.forEach(function(Ticket) {
+                if (Ticket.id == TicketEnUso.id){
+
+                  Ticket.ref.update({
+                  
+                  Disponibilidad: (Ticket.data().Disponibilidad+1)
+  
+                })
+  
+                .then(function(docRef) {
+                  alert("Tu tiempo se ha acabado")
+                  document.getElementById(`Post_Evento`).submit();
+  
+                })
+                .catch(function(error) {
+                console.error("Error adding document: ", error);
+                });
+
+                }
+
+
+
+
+              })
+
+              })
+              .then(function(docRef) {
+
+              })
+              .catch(function(error) {
+              console.error("Error adding document: ", error);
+              });
+            
+
+
+
+            })
+
+            })
+            .then(function(docRef) {
+            
+            })
+            .catch(function(error) {
+            console.error("Error adding document: ", error);
+            });
+
+
+            
+           
+
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var Minutes = 60 * 1,
+        display = document.querySelector('#time');
+    startTimer(Minutes, display);
+};
+
+
+var TicketEnUso;
+var str=``;
+var p=``;
+var tp=``;
+db.collection("Evento").get().then(function(querySnapshot) {
+  console.log("yes")
+  
+  querySnapshot.forEach(function(Evento) {
+      if(Evento.id == document.getElementById(`evento`).value){
+        console.log("yes2")
+      db.collection("Liga").get().then(function(querySnapshot) {
+         querySnapshot.forEach(function(Liga) {
+          Liga.ref.collection("Equipos").get().then(function(querySnapshot) {
+          querySnapshot.forEach(function(Equipo) {
+            if (Evento.data().Local == Equipo.id){
+
+            str+=`${Equipo.data().Nombre} vs ${Evento.data().Visitante}`;
+
+
+            
+            Evento.ref.collection("Tickets").get().then(function(querySnapshot) {
+
+
+            querySnapshot.forEach(function(Ticket) {
+              
+              if(Ticket.id == document.getElementById("ticket").value){
+                p+=`$${Ticket.data().Precio}`
+                tp+=`$${Ticket.data().Precio}`
+                TicketEnUso =Ticket;
+                Ticket.ref.update({
+                  
+                Disponibilidad: (Ticket.data().Disponibilidad-1)
+
+              })
+
+              .then(function(docRef) {
+                document.getElementById("E").innerHTML=str;
+              document.getElementById("price").innerHTML=p;
+              
+              document.getElementById("TotalPrice").innerHTML=tp;
+
+              })
+              .catch(function(error) {
+              console.error("Error adding document: ", error);
+              });
+              }
+              
+            
+
+
+            })
+
+            })
+            .then(function(docRef) {
+              
+             
+
+            })
+            .catch(function(error) {
+            console.error("Error adding document: ", error);
+            });
+
+
+            }
+
+
+
+          })
+
+          })
+          .then(function(docRef) {
+          
+          console.log("yes")
+
+
+          })
+          .catch(function(error) {
+          console.error("Error adding document: ", error);
+          });
+
+
+
+      })
+
+      })
+      .then(function(docRef) {
+      str+=``
+
+
+      })
+      .catch(function(error) {
+      console.error("Error adding document: ", error);
+      });
+
+      }
+  
+      
+  })
+  
+  })
+  .then(function(docRef) {
+    str+=``
+      
+              
+          })
+  .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+
+
+function Precio(){
+
+}
+</script>
 </body>
 </html>
