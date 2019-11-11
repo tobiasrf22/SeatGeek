@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 const app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8082;
 import * as socketio from "socket.io";
 const fileUpload = require('express-fileupload')
 const morgan = require('morgan')
@@ -64,18 +64,18 @@ app.post( "/compra", ( req, res) => {
 
 
 
-app.get( "/admin/estadios", ( req, res) => {
+app.get( "/qw8pSpWEvGVKQzSA/admin/estadios", ( req, res) => {
     res.render("admin_stadiums"); 
 
 } );
 
 
-app.get( "/admin/eventos", ( req, res) => {
+app.get( "/qw8pSpWEvGVKQzSA/admin/eventos", ( req, res) => {
     res.render("admin_evento"); 
 
 } );
 
-app.get( "/admin/users", ( req, res) => {
+app.get( "/qw8pSpWEvGVKQzSA/admin/users", ( req, res) => {
     res.render("admin_usuarios"); 
 
 } );
@@ -86,6 +86,6 @@ app.get( "/ne", ( req, res) => {
 } );
 
 
-const server = http.listen(8080, function() {
+const server = http.listen(8082, function() {
     console.log(`Servidor iniciado: http://localhost:${ port }`);
   });

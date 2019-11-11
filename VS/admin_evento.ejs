@@ -380,12 +380,12 @@
 </head>
 <body>
 
-<div class="sidenav">
-  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin.html">Ligas</a>
-  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_stadiums.html">Estadios</a>
-  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_evento.html">Eventos</a>
-  <a href="C:\Users\tobia\Desktop\SeatGeek-master\admin_usuarios.html">Usuarios</a>
-</div>
+    <div class="sidenav">
+        <a href="http://localhost:8082/qw8pSpWEvGVKQzSA/admin/">Ligas</a>
+        <a href="http://localhost:8082/qw8pSpWEvGVKQzSA/admin/estadios">Estadios</a>
+        <a href="http://localhost:8082/qw8pSpWEvGVKQzSA/admin/eventos">Eventos</a>
+        <a href="http://localhost:8082/qw8pSpWEvGVKQzSA/admin/users">Usuarios</a>
+      </div>
 
 
 
@@ -1266,6 +1266,57 @@ function Volver(){
 function Estadios(){
 
 }
+
+window.onload = function () {
+    Admin()
+};
+
+
+Admin=()=>{
+
+    db.collection("Admin").get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(Admin) {
+    firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log(user.email, "==", Admin.data().Mail)
+                if (user.email == Admin.data().Mail){
+
+                }
+                else{
+                    alert("NO ERES UN USUARIO ADMINISTRADOR")
+                    document.location.href = "http://localhost:8082/home";
+                }
+                    
+                }
+                else {
+                    
+
+                    
+            }
+            });
+
+
+    
+})
+
+})
+.then(function(docRef) {
+  
+            
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+
+
+
+
+
+
+    
+
+}
+
 </script>
 </body>
 </html>
